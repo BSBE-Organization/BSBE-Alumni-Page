@@ -26,7 +26,8 @@ function App(){
   
   return (
     <>
-    {data.length > 0 ? (
+    <h1>Welcome to BSBE Alumini Page</h1>
+    {/* {data.length > 0 ? (
       data.map((item, idx) => (
         <div key={idx}>
           <p>Date: {item.column1}</p>
@@ -37,7 +38,7 @@ function App(){
       ))
     ) : (
       <p>Loading...</p>
-    )}
+    )} */}
   </>
   )
 }
