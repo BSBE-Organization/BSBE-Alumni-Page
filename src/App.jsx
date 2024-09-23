@@ -29,10 +29,10 @@ function App(){
     {data.length > 0 ? (
       data.map((item, idx) => (
         <div key={idx}>
-          <p>Column 1: {item.column1}</p>
-          <p>Column 2: {item.column2}</p>
-          <p>Column 3: {item.column3}</p>
-          <p>Column 4: {item.column4}</p>
+          <p>Date: {item.column1}</p>
+          <p>Name: {item.column2}</p>
+          <p>Email: {item.column3}</p>
+          <p>Webmail: {item.column4}</p>
         </div>
       ))
     ) : (
