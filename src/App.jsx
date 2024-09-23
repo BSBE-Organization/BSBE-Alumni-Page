@@ -1,3 +1,4 @@
+import './App.css'
 import { useState,useEffect } from "react";
 function App(){
   const [data, setData] = useState([]);
@@ -26,7 +27,11 @@ function App(){
   
   return (
     <>
-    <h1>Welcome to BSBE Alumini Page</h1>
+    <div className="home">
+      <h1>Welcome to BSBE Alumni Page.</h1>
+      <h2>The page is under development.</h2>
+    </div>
+    
     {/* {data.length > 0 ? (
       data.map((item, idx) => (
         <div key={idx}>

@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.home{
+    margin: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: #1da765;
+    color: white;
+    height: 100vh;
+}
