@@ -28,7 +28,7 @@ function App(){
   return (
     <>
     <div className="home">
-      <img src="/bg.jpg" alt="" />
+      <img src="bg.jpg" alt="" />
       <div className="box">
         <h1>Welcome to BSBE Alumni Page.</h1>
         <h3>BSBE Alumni Meet 2024, October 26 - 27, 2024, Oct 26, 2024 to Oct 27, 2024</h3>
