@@ -1,121 +1,63 @@
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
-import Link from 'next/link'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Icons } from "@/components/icons"
+'use client'
 
-const signUpSchema = z.object({
-  email: z.string().email({ message: "Invalid email address" }),
-  password: z.string().min(8, { message: "Password must be at least 8 characters long" }),
-  confirmPassword: z.string()
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
-})
+import { signIn, signOut } from "next-auth/react"
+import { useSession } from "next-auth/react"
+import { useState } from "react"
+import React from 'react';
 
-type SignUpData = z.infer<typeof signUpSchema>
+export default function AuthPage() {
+//   const { data: session, status } = useSession()
+  const [email, setEmail] = useState("")
 
-export default function SignUpPage() {
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-
-  const { register, handleSubmit, formState: { errors } } = useForm<SignUpData>({
-    resolver: zodResolver(signUpSchema)
-  })
-
-  const onSubmit = async (data: SignUpData) => {
-    setIsLoading(true)
-    setError(null)
-
-    try {
-      // Here you would typically call your registration API
-      console.log('Sign up data:', data)
-     
-      // If sign-up is successful, you might redirect the user or show a success message
-    } catch (err) {
-      setError('Failed to sign up. Please try again.')
-    } finally {
-      setIsLoading(false)
-    }
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    signIn("email", { email })
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md space-y-8 rounded-lg bg-white p-6 shadow-md">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold">Sign Up</h1>
-          <p className="mt-2 text-sm text-gray-600">Create your account to get started</p>
-        </div>
-
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
-          <div className="space-y-4">
+    <div className="min-h-screen bg-[#00008B] flex flex-col">
+      <header className="p-4 text-white text-2xl">
+        Signup / Login
+      </header>
+      <main className="flex-grow flex items-center justify-center p-4">
+        <div className="bg-white rounded-lg shadow-lg w-full max-w-3xl flex">
+          <div className="w-1/2 p-8 flex flex-col justify-between">
             <div>
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="you@example.com"
-                {...register('email')}
-                aria-invalid={errors.email ? "true" : "false"}
-              />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-600" role="alert">{errors.email.message}</p>
-              )}
+              <img src="/placeholder.svg?height=100&width=200" alt="IIT Guwahati Alumni Association Logo" className="mb-4" />
+              <h1 className="text-2xl font-bold mb-2">IIT Guwahati Alumni Association</h1>
+              <h2 className="text-xl mb-4">Indian Institute of Technology, Guwahati Alumni Association</h2>
             </div>
-
-            <div>
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                {...register('password')}
-                aria-invalid={errors.password ? "true" : "false"}
-              />
-              {errors.password && (
-                <p className="mt-1 text-sm text-red-600" role="alert">{errors.password.message}</p>
-              )}
-            </div>
-
-            <div>
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                placeholder="••••••••"
-                {...register('confirmPassword')}
-                aria-invalid={errors.confirmPassword ? "true" : "false"}
-              />
-              {errors.confirmPassword && (
-                <p className="mt-1 text-sm text-red-600" role="alert">{errors.confirmPassword.message}</p>
-              )}
-            </div>
+            <p className="text-gray-600">Sign up or log in to stay connected with your community</p>
           </div>
-
-          {error && (
-            <Alert variant="destructive">
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
-          )}
-
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
-            Sign Up
-          </Button>
-        </form>
-
-        <div className="text-center text-sm">
-          Already have an account?{" "}
-          <Link href="/login" className="font-medium text-primary hover:underline">
-            Sign in
-          </Link>
+          <div className="w-1/2 p-8 flex flex-col justify-center">
+            <h3 className="text-xl mb-4">Choose any one of the following to Signup/Login</h3>
+             
+              <>
+                <button className="mb-4 bg-[#DB4437] hover:bg-[#C53929]" onClick={() => signIn("google")}>
+                  CONNECT WITH GOOGLE
+                </button>
+                <button className="mb-4 bg-[#2E77BC] hover:bg-[#1E5B8E]" onClick={() => signIn("azure-ad")}>
+                  CONNECT WITH AZURE
+                </button>
+                <div className="text-center my-4">OR</div>
+                <form onSubmit={handleEmailSubmit}>
+                  <input
+                    type="email"
+                    placeholder="Enter your Email..."
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="mb-4"
+                  />
+                  <button type="submit" className="w-full bg-[#4285F4] hover:bg-[#3367D6]">
+                    Continue with Email
+                  </button>
+                </form>
+              </>
+             
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }
