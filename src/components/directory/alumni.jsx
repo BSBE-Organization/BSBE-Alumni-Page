@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Card from '../components/Card'; // Assuming you have a Card component to display alumni data
+import Card from './AlumniCard'; // Assuming you have a Card component to display alumni data
 
-const AlumniDirectory = () => {
+const Alumnipage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [batchFilter, setBatchFilter] = useState('');
   const [programFilter, setProgramFilter] = useState('');
