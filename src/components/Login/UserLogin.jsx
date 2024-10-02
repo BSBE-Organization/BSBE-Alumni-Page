@@ -5,7 +5,7 @@ export default function AuthPage() {
 //   const { data: session, status } = useSession()
   const [email, setEmail] = useState("")
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = (e) => {
     e.preventDefault()
   }
 
