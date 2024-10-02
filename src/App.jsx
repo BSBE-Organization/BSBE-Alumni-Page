@@ -1,10 +1,19 @@
 import './App.css'
-import LandingPage from './components/LandingPage';
+import Footer from './components/Footer';
+import { BrowserRouter, Route, Routes} from 'react-router-dom'
 function App(){
   
   return (
     <>
-      <LandingPage/>
+      <BrowserRouter>
+        <Routes>
+          {/* <Route path='/' element={Home} />
+          <Route path='/directory' element={appointmentType} />
+          <Route path="/team"/>
+          <Route path='/auth' element={login} /> */}
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
     </>
   )
 }
