@@ -1,5 +1,5 @@
 import React from 'react';
-import './../styles/alumcardstyle.css'; // Import the CSS file
+import './styles/alumcardstyle.css'; // Import the CSS file
 
 interface CardProps {
   imgSrc: string;

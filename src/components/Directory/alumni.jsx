@@ -10,8 +10,8 @@ const Alumnipage = () => {
 
   // Example alumni data (replace with your actual data)
   const alumniData = [
-    { name: 'Aditya Jindal', batch: '2016', program: 'B.Tech', ...otherFields },
-    { name: 'Sumeet Ahire', batch: '2016', program: 'Ph.D', ...otherFields },
+    { name: 'Aditya Jindal', batch: '2016', program: 'B.Tech' },
+    { name: 'Sumeet Ahire', batch: '2016', program: 'Ph.D' },
     // Add more alumni data here
   ];
 
@@ -90,4 +90,4 @@ const Alumnipage = () => {
   );
 };
 
-export default AlumniDirectory;
+export default Alumnipage;

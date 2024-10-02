@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/teamstyle.css'; // Import the CSS file
-import Card from './directory/card.tsx'; // Adjust the import path as necessary
+import './styles/teamstyle.css'; // Import the CSS file
+import Card from './card.tsx'; // Adjust the import path as necessary
 
 const TeamPage = () => {
   const teamfound = [
