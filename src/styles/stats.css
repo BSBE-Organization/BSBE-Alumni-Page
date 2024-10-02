@@ -1,0 +1,26 @@
+.stats-container {
+  display: flex;
+  gap: 40px;
+  margin-top: -45px; /* Shift 10px higher */
+  z-index: 3; /* Increase the z-index so it's above the background */
+  justify-content: center;
+  position: relative; /* Ensure it's positioned for z-index to work */
+}
+
+.stat-box {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.stat-box h2 {
+  font-size: 2rem;
+  color: #0F6F41; /* Green color for numbers */
+}
+
+.stat-box p {
+  font-size: 1rem;
+  color: #555; /* Lighter color for description text */
+}

@@ -1,0 +1,105 @@
+/* Container for events and alumni sections */
+.events-container {
+  width: 100%;
+  padding: 40px 20px;
+}
+
+/* Upcoming Event Section */
+.upcoming-event-section {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0F6F41; /* Green color */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.event-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 900px; /* Limit width of the card */
+}
+
+.event-image {
+  width: 60%; /* Adjust the width of the image */
+  object-fit: cover; /* Ensure the image covers the area */
+}
+
+.event-info {
+  padding: 20px; /* Space inside the info section */
+  flex: 1; /* Allow this section to grow */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space between elements */
+}
+
+.event-info h3 {
+  font-size: 1.5rem; /* Title font size */
+  color: #333; /* Dark text color */
+}
+
+.event-info p {
+  font-size: 1rem; /* Paragraph font size */
+  color: #666; /* Lighter text color */
+  margin-bottom: 20px; /* Space below the paragraph */
+}
+
+.register-btn {
+  padding: 10px 20px; /* Button padding */
+  background-color: #1db954; /* Green button */
+  color: white; /* White text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s; /* Smooth background change */
+}
+
+.register-btn:hover {
+  background-color: #1aa34a; /* Darker green on hover */
+}
+
+/* Notable Alumni Section */
+.notable-alumni-section {
+  text-align: center; /* Center align text */
+}
+
+.alumni-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four columns for alumni cards */
+  gap: 20px; /* Space between grid items */
+  justify-content: center; /* Center the grid */
+}
+
+.alumni-card {
+  background-color: #e7f9f1; /* Light green background */
+  border-radius: 15px; /* Rounded corners */
+  padding: 20px; /* Space inside the card */
+  text-align: center; /* Center text */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.alumni-image {
+  width: 100px; /* Set fixed width */
+  height: 100px; /* Set fixed height */
+  border-radius: 50%; /* Circle image */
+  margin-bottom: 15px; /* Space below image */
+}
+
+.alumni-info h4 {
+  font-size: 1.2rem; /* Alumni name font size */
+  color: #333; /* Dark text color */
+}
+
+.alumni-info p {
+  font-size: 1rem; /* Alumni description font size */
+  color: #555; /* Medium light color */
+}

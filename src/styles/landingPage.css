@@ -1,0 +1,79 @@
+.landing-container {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0;
+}
+
+.landing-container::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  background: linear-gradient(130.59deg, rgba(0, 0, 0, 0) 0.24%, rgba(7, 42, 25, 0.24) 49.08%),
+              url('../assets/IIT_Guwahati.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.48;
+  z-index: 1;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+  z-index: 2;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.cta-alumni {
+  padding: 8px 16px;
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Navbar Styles */
+.logo {
+  height: 50px; /* Adjust height as necessary */
+  margin-right: 20px; /* Space between logo and menu */
+}
