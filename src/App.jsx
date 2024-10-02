@@ -1,15 +1,19 @@
 import './App.css'
-import Login from './assets/Login';
-import AuthPage from './components/Login/UserLogin';
-import './index.css';
-import UserProfileForm from './components/UserForm/UserForm';
+import Footer from './components/Footer';
+import { BrowserRouter, Route, Routes} from 'react-router-dom'
 function App(){
   
   return (
     <>
-      {/* <Login/> */}
-      <AuthPage/>
-      {/* <UserProfileForm/> */}
+      <BrowserRouter>
+        <Routes>
+          {/* <Route path='/' element={Home} />
+          <Route path='/directory' element={appointmentType} />
+          <Route path="/team"/>
+          <Route path='/auth' element={login} /> */}
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
     </>
   )
 }
