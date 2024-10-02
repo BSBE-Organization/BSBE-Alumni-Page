@@ -1,0 +1,78 @@
+.stats-container {
+  display: flex;
+  gap: 40px; /* Space between stat boxes */
+  margin: -45px 40px 0; /* Shift 10px higher and maintain 40px margin on left and right */
+  z-index: 3; /* Increase the z-index so it's above the background */
+  justify-content: center; /* Center the boxes */
+  position: relative; /* Ensure it's positioned for z-index to work */
+  overflow-x: auto; /* Allow horizontal scrolling if necessary */
+  padding: 0 40px; /* Maintain padding on the sides */
+}
+
+/* Added to ensure the flex items don’t wrap */
+.stats-container::-webkit-scrollbar {
+  height: 8px; /* Custom scrollbar height */
+}
+
+.stats-container::-webkit-scrollbar-thumb {
+  background: #ccc; /* Scrollbar color */
+  border-radius: 10px; /* Rounded scrollbar */
+}
+
+.stat-box {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  flex: 0 1 250px; /* Allow boxes to shrink but maintain minimum width */
+  max-width: 300px; /* Maximum width for the boxes */
+}
+
+/* Responsive font sizes for stat boxes */
+.stat-box h2 {
+  font-size: 2rem;
+  color: #0F6F41; /* Green color for numbers */
+}
+
+.stat-box p {
+  font-size: 1rem;
+  color: #555; /* Lighter color for description text */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .stats-container {
+    gap: 20px; /* Reduce gap between boxes */
+    margin-top: -20px; /* Adjust margin for smaller screens */
+  }
+
+  .stat-box {
+    padding: 15px; /* Reduce padding */
+    flex: 0 1 180px; /* Allow smaller widths but maintain shape */
+    max-width: 220px; /* Maximum width for the boxes */
+  }
+
+  .stat-box h2 {
+    font-size: 1.5rem; /* Smaller font size for numbers */
+  }
+
+  .stat-box p {
+    font-size: 0.9rem; /* Smaller font size for description text */
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-box {
+    flex: 0 1 150px; /* Further reduce width for very small screens */
+    max-width: 180px; /* Maximum width for the boxes */
+  }
+
+  .stat-box h2 {
+    font-size: 1.2rem; /* Further reduce font size for very small screens */
+  }
+
+  .stat-box p {
+    font-size: 0.8rem; /* Further reduce font size for very small screens */
+  }
+}

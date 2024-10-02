@@ -1,0 +1,43 @@
+/* TeamPageStyles.css */
+
+.container {
+    padding: 20px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: rgba(5, 41, 25, 1);
+    text-align: left;
+  }
+  
+  .header {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-weight: bold;
+    color: rgba(5, 41, 25, 1);
+  }
+  
+  .subheading {
+    text-align: center;
+  }
+  
+  .subheading h2 {
+    font-weight: bold;
+    color: rgba(5, 41, 25, 1);
+  }
+  
+  .section {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+  }
+  
+  /* Flexbox Grid */
+  .flex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1000px;
+  }
+  
