@@ -1,4 +1,4 @@
-import { auth } from '../config';
+import { auth } from '../../config';
 import { getDatabase, ref, set } from 'firebase/database';
 import { getAuth,OAuthProvider, GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
 

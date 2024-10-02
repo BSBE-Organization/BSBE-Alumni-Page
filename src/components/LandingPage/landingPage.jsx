@@ -1,18 +1,16 @@
 import React from "react";
-import "../styles/landingPage.css";
+import { Link } from 'react-router-dom';
+import "./styles/landingPage.css";
 
 const LandingPage = () => {
   return (
     <div className="landing-container">
       <nav className="navbar">
-        <img src="/public/iitg.png" alt="Logo" className="logo" />
+        <img src="/iitg.png" alt="Logo" className="logo" />
         <ul className="navbar-menu">
-          <li>
-            <a href="#directory">Directory</a>
-          </li>
-          <li>
-            <a href="#team">Team</a>
-          </li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/directory">Directory</Link></li>
+          <li><Link to="/team">Team</Link></li>
           <li>
             <button className="cta-alumni">Are you an Alumni?</button>
           </li>
