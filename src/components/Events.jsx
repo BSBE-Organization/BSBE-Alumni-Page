@@ -7,34 +7,25 @@ const Events = () => {
       <div className="upcoming-event-section">
         <h2 className="section-title">Upcoming Event</h2>
         <div className="event-card">
-          <img
-            className="event-image"
-            src="/src/assets/students.jpg"
-            alt="BSBE Alumni Meet 2024"
-          />
-          <div className="event-info">
-            <h3>BSBE Alumni Meet 2024</h3>
-            <p>
-              Dept. of Biosciences and Bioengineering will be hosting their
-              first alumni meet on 26th and 27th October, 2024. Regular updates
-              will be posted.
-            </p>
-            <button className="register-btn">Register</button>
+          <div className="event-image-container">
+            <img
+              className="event-image"
+              src="/public/event.png"
+              alt="BSBE Alumni Meet 2024"
+            />
+            <button className="register-btn">Register</button>{" "}
+            {/* Button inside image container */}
           </div>
         </div>
       </div>
 
       {/* Notable Alumni Section */}
-      <div className="notable-alumni-section">
+      {/* <div className="notable-alumni-section">
         <h2 className="section-title">Notable Alumni</h2>
         <div className="alumni-grid">
           {[1, 2, 3, 4].map((_, index) => (
             <div className="alumni-card" key={index}>
-              <img
-                className="alumni-image"
-                src="/src/assets/Manish sir.jpg" 
-                alt="image"
-              />
+              <img className="alumni-image" src="/public/bg.jpg" alt="image" />
               <div className="alumni-info">
                 <h4>Aditya Jindal</h4>
                 <p>Aditya Jindal</p>
@@ -42,7 +33,7 @@ const Events = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

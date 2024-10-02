@@ -1,15 +1,21 @@
-import React from 'react'
-import "../styles/Navbar.css"
+import React, { useState } from "react";
+import "../styles/Navbar.css";
+
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div>
       <nav className="navbar">
-        <img
-          src="/src/assets/IITG_logo.png"
-          alt="Website Logo"
-          className="logo"
-        />
-        <ul className="navbar-menu">
+        <img src="/public/iitg.png" alt="Website Logo" className="logo" />
+        <button className="hamburger" onClick={toggleMenu}>
+          ☰
+        </button>
+        <ul className={`navbar-menu ${isMenuOpen ? "open" : ""}`}>
           <li>
             <a href="#directory">Directory</a>
           </li>
@@ -23,6 +29,6 @@ const Navbar = () => {
       </nav>
     </div>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
