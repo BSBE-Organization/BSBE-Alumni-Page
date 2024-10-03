@@ -6,7 +6,7 @@ const LandingPage = () => {
   return (
     <div className="landing-container">
       <nav className="navbar">
-        <img src="/iitg.png" alt="Logo" className="logo" />
+        <img src="iitg.png" alt="Logo" className="logo" />
         <ul className="navbar-menu">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/directory">Directory</Link></li>
