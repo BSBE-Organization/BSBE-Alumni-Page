@@ -1,44 +1,43 @@
-import { useState } from "react"
-import React from 'react';
+import React from 'react'
 
-export default function AuthPage() {
-//   const { data: session, status } = useSession()
-  const [email, setEmail] = useState("")
-
-  const handleEmailSubmit = (e) => {
-    e.preventDefault()
-  }
-
+export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-[#00008B] flex flex-col">
-      <header className="p-4 text-white text-2xl">
-        Signup / Login
-      </header>
-      <main className="flex-grow flex items-center justify-center p-4">
-        <div className="bg-white rounded-lg shadow-lg w-full max-w-3xl flex">
-          <div className="w-1/2 p-8 flex flex-col justify-between">
-            <div>
-              <img src="/placeholder.svg?height=100&width=200" alt="IIT Guwahati Alumni Association Logo" className="mb-4" />
-              <h1 className="text-2xl font-bold mb-2">IIT Guwahati Alumni Association</h1>
-              <h2 className="text-xl mb-4">Indian Institute of Technology, Guwahati Alumni Association</h2>
+    <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "url('/campus-background.jpg')" }}>
+      <div className="absolute inset-0 bg-white/30 backdrop-blur-sm"></div>
+      <div className="relative z-10">
+        <header className="flex justify-between items-center p-4">
+          <div className="flex items-center space-x-2">
+            <img src="/logo.png" alt="Logo" className="w-10 h-10" />
+          </div>
+          <nav>
+            <ul className="flex space-x-4">
+              <li><a href="/" className="text-gray-800 hover:text-gray-600">Home</a></li>
+              <li><a href="/directory" className="text-gray-800 hover:text-gray-600">Directory</a></li>
+              <li><a href="/team" className="text-gray-800 hover:text-gray-600">Team</a></li>
+              <li>
+                <button className="bg-green-500 text-white hover:bg-green-600 px-4 py-2 rounded">
+                  Are you an Alum?
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main className="flex justify-center items-center min-h-[calc(100vh-80px)]">
+          <div className="bg-white/80 backdrop-blur-md p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Create/Update Profile</h1>
+            <div className="space-y-4">
+              <button className="w-full flex items-center justify-start text-left pl-4 py-6 border border-gray-300 rounded hover:bg-gray-50">
+                <img src="/google-logo.png" alt="Google logo" className="w-6 h-6 mr-4" />
+                Continue with Google
+              </button>
+              <button className="w-full flex items-center justify-start text-left pl-4 py-6 border border-gray-300 rounded hover:bg-gray-50">
+                <img src="/outlook-logo.png" alt="Outlook logo" className="w-6 h-6 mr-4" />
+                Continue with Outlook
+              </button>
             </div>
-            <p className="text-gray-600">Sign up or log in to stay connected with your community</p>
           </div>
-          <div className="w-1/2 p-8 flex flex-col justify-center">
-            <h3 className="text-xl mb-4">Choose any one of the following to Signup/Login</h3>
-             
-              <>
-                <button className="mb-4 bg-[#DB4437] hover:bg-[#C53929]" onClick={() => signIn("google")}>
-                  CONNECT WITH GOOGLE
-                </button>
-                <button className="mb-4 bg-[#2E77BC] hover:bg-[#1E5B8E]" onClick={() => signIn("azure-ad")}>
-                  CONNECT WITH AZURE
-                </button>
-              </>
-             
-          </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   )
 }
