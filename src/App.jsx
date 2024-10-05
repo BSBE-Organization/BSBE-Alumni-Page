@@ -1,5 +1,6 @@
 import './App.css'
 import './index.css'
+import Navbar from "./components/Navbar.jsx"
 import Footer from './components/Footer';
 import LandingPage from './components/LandingPage/landingPage.jsx';
 import TeamPage from './components/Directory/teams.jsx';
@@ -12,6 +13,7 @@ function App(){
   return (
     <>
       <BrowserRouter>
+      <Navbar/>
         <Routes>
           <Route path='/' element={<LandingPage/>} />
           <Route path='/team' element={<TeamPage/>} />

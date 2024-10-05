@@ -115,7 +115,7 @@
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .section-title {
     font-size: 2rem; /* Adjust title size for smaller screens */
   }
@@ -164,5 +164,71 @@
   .alumni-image {
     width: 100px; /* Smaller image size */
     height: 100px; /* Smaller image size */
+  }
+}
+/* Event Image Container */
+.event-image-container {
+  width: 100%; /* Full width container */
+  height: auto; /* Let height adjust based on the image */
+  position: relative; /* For absolute positioning of the button */
+}
+
+/* Event Image */
+.event-image {
+  display: block;
+  width: 100%; /* Full width image */
+  height: auto; /* Maintain the aspect ratio */
+  object-fit: cover; /* Ensure the image covers the container without distortion */
+}
+
+/* Register Button */
+.register-btn {
+  position: absolute;
+  bottom: 5%; /* Adjust button position relative to the image */
+  right: 5%; /* Adjust button position relative to the image */
+  padding: 1vw 4vw; /* Responsive padding based on viewport width */
+  font-size: 1.2rem; /* Base font size */
+  background-color: #1db954;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect */
+.register-btn:hover {
+  background-color: #1aa34a;
+  transform: scale(1.05);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .register-btn {
+    padding: 0.8vw 3.5vw; /* Reduce padding for medium screens */
+    font-size: 1rem; /* Reduce font size */
+  }
+}
+
+@media (max-width: 600px) {
+  .register-btn {
+    padding: 0.7vw 3vw; /* Further reduce padding */
+    font-size: 0.9rem; /* Further reduce font size */
+  }
+
+  .event-card {
+    width: calc(100% - 30vw); /* Adjust width on smaller screens */
+    margin: 0 auto; /* Center the card */
+  }
+}
+
+@media (max-width: 480px) {
+  .register-btn {
+    padding: 0.5vw 2.5vw; /* Smaller padding for the button */
+    font-size: 0.8rem; /* Smaller font size */
+  }
+
+  .event-card {
+    margin: 0 5vw; /* Reduce margin */
   }
 }

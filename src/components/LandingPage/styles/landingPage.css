@@ -79,7 +79,7 @@ h1 {
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .navbar {
     flex-direction: column; /* Stack items vertically */
     align-items: flex-end; /* Align to the right */

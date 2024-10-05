@@ -41,7 +41,7 @@
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .stats-container {
     gap: 20px; /* Reduce gap between boxes */
     margin-top: -20px; /* Adjust margin for smaller screens */
@@ -75,4 +75,9 @@
   .stat-box p {
     font-size: 0.8rem; /* Further reduce font size for very small screens */
   }
+}
+.stat-box h2 {
+  font-size: 2rem;
+  color: #0F6F41;
+  transition: all 0.5s ease; /* Smooth transition for the counting effect */
 }

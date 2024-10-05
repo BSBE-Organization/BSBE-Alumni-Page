@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/events.css";
+import "./styles/events.css";
 
 const Events = () => {
   return (
@@ -10,7 +10,7 @@ const Events = () => {
           <div className="event-image-container">
             <img
               className="event-image"
-              src="/public/event.png"
+              src="/event.png"
               alt="BSBE Alumni Meet 2024"
             />
             <button className="register-btn">Register</button>{" "}
