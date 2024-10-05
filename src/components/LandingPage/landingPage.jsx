@@ -1,8 +1,4 @@
-import React from "react";
-import { Link } from 'react-router-dom';
 import "./styles/landingPage.css";
-import "./styles/stats.css";
-import "./styles/events.css";
 import Stats from "../LandingPage/stats";
 import Events from "../LandingPage/Events";
 const LandingPage = () => {

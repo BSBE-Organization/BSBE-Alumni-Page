@@ -52,7 +52,7 @@ function Login(){
 
     return(
       <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "url('/bg.jpg')" }}>
-      <div className="relative z-10">
+      <div className="relative z-0">
         <main className="flex justify-center items-center min-h-[calc(100vh-80px)]">
           {/* Increased the size of the card */}
           <div className="bg-white/80 backdrop-blur-md p-10 rounded-lg shadow-lg w-full max-w-lg">

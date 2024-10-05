@@ -1,128 +1,85 @@
-/* General Navbar styles */
-.nvbar {
-  position: absolute;
-  top: 20px;
-  left: 0;
+.nav-bar{
   width: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center; /* Align items in the navbar vertically */
-  padding: 0;
-  z-index: 2;
-  background-color: transparent;
-}
-
-/* Logo styles */
-.logo {
-  height: 50px;
-  margin-right: 5px;
-  margin-top: 0; /* Remove top margin */
-}
-
-/* Alumni call-to-action button */
-.cta-alumni {
-  padding: 8px 16px;
-  background-color: #1db954;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-right: 10px;
-}
-
-.cta-alumni:hover {
-  background-color: #17a046;
-}
-
-/* Hamburger button */
-.hamburger {
-  display: none;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  color: black;
-  cursor: pointer;
+  align-items: center;
+  padding: 2vw;
   position: absolute;
-  right: 15px;
-  z-index: 3;
-  top: 50%; /* Vertically center the hamburger */
-  transform: translateY(-50%); /* Align vertically relative to navbar */
+  top: 0;
+  z-index: 2;
+}
+.nav-bar img{
+  width: 5vw;
+  height: 5vw;
+}
+.nav-bar ul{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+.nav-bar li{
+  margin: 1vw;
+  padding: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#nav-btn{
+  background-color: #0F8B4E;
+  border-radius: 20px;
+}
+.nav-bar li:hover{
+  background-color: white;
+  color: #0F8B4E;
+  border-radius: 15px;
+  transition: .8s;
+}
+#nav-btn:hover{
+  background-color: white;
+  color: #0F8B4E;
+  transition: .8s;
+}
+#toggle{
+  display: none;
 }
 
-/* Media Queries for Responsiveness */
+.toggle-menu{
+  display: none;
+  width: 100%;
+  background-color: white;
+  position: fixed;
+  z-index: 10;
+  top: 20VW;
+}
+.toggle-menu ul{
+  margin: 4vw 4vw 5vw 4vw;
+  padding: 0;
+}
+.toggle-menu li{
+  margin: 1vw;
+  padding: 1vw;
+  font-weight: 500;
+  text-align: center;
+  border-bottom: 1px solid #0F8B4E;
+}
 
-/* Styles for screen widths greater than 600px */
-@media (min-width: 600px) {
-  .nvbar {
-    justify-content: space-between;
+@media only screen and (max-width: 650px) {
+  .nav-bar{
+    padding: 5vw;
   }
-
-  .navbar-menu {
-    display: flex;
-    max-height: none;
-    opacity: 1;
+  .nav-bar img{
+    width: 10vw;
+    height: 10vw;
   }
-
-  .hamburger {
+  .nav-bar ul{
     display: none;
   }
-
-  .logo {
-    height: 50px;
-    margin-right: 10px;
-  }
-
-  .navbar-menu a {
-    font-size: 1.2rem;
-    margin-right: 10px;
-  }
-}
-
-/* Styles for screen widths below 600px */
-@media (max-width: 600px) {
-  .nvbar {
-    flex-direction: row; /* Ensure it stays in a row */
-    align-items: center;
-  }
-
-  .hamburger {
+  .toggle-menu{
     display: block;
-    font-size: 1.5rem;
-    color: black;
-    position: absolute;
-    right: 15px;
-    top: 50%; /* Vertically center the hamburger */
-    transform: translateY(-50%); /* Ensure hamburger stays aligned */
   }
-
-  .navbar-menu {
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    background-color: transparent;
-    padding: 20px;
-    gap: 15px;
-    text-align: center;
-  }
-
-  .navbar-menu.open {
-    display: flex;
-  }
-
-  .cta-alumni {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 10px;
-    margin-right: 10px;
-  }
-
-  .logo {
-    margin-left: 0;
-    height: 40px;
-    margin-right: 10px;
+  #toggle{
+    display: block;
   }
 }
