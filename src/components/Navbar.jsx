@@ -24,7 +24,7 @@ const Navbar = () => {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/">Directory</Link></li>
           <li><Link to="/">Team</Link></li>
-          <li id='nav-btn'><Link to="/">Are you an Alumni?</Link></li>
+          <li id='nav-btn'><Link to="/404">Are you an Alumni?</Link></li>
         </ul>
 
         <img src={toggle} onClick={click} alt="toggle" id="toggle"/>
@@ -33,9 +33,9 @@ const Navbar = () => {
         <div className="toggle-menu">
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/directory">Directory</Link></li>
-            <li><Link to="/team">Team</Link></li>
-            <li><Link to="/auth">Are you an Alumni?</Link></li>
+            <li><Link to="/">Directory</Link></li>
+            <li><Link to="/">Team</Link></li>
+            <li><Link to="/">Are you an Alumni?</Link></li>
           </ul>
         </div>
         }
