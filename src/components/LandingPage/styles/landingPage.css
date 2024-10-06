@@ -17,8 +17,8 @@
 }
 .header h1{
   font-size: 5vw;
-  color: white;
-  font-weight: 800;
+  color: black;
+  font-weight: 500;
 }
 @media (max-width: 900px) {
   .home img{
