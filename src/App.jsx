@@ -3,7 +3,6 @@ import './index.css'
 import Navbar from "./components/Navbar.jsx"
 import Footer from './components/Footer';
 import LandingPage from './components/LandingPage/landingPage.jsx';
-import Home from './components/Home.jsx';
 import TeamPage from './components/Directory/teams.jsx';
 import Alumnipage from './components/Directory/alumni.jsx'
 import Login from './components/Auth/Login.jsx';

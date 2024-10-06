@@ -6,7 +6,7 @@ const LandingPage = () => {
     <>
       <div className="home">
         <img src="home/bg.jpg" alt="" />
-        <div className="header">
+        <div className="heading">
           <h2>BSBE</h2>
           <h1>Alumni Page</h1>
         </div>

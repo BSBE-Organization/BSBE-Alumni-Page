@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <>
       <div className="nav-bar">
-        <img src="iitg.png" alt="" />
+        <img src="home/iitg.png" alt="" />
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/directory">Directory</Link></li>
