@@ -5,7 +5,7 @@ const Events = () => {
   return (
     <div className="events-container">
       <h1>Upcoming Event</h1>
-      <img src="event.png" alt="" />
+      <img src="home/event.png" alt="" />
       <div className="event-box">
         <div className="description">
           <h3>BSBE Alumni Meet 2024</h3>

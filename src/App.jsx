@@ -13,7 +13,7 @@ function App(){
   
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Navbar/>
         <Routes>
           <Route path='/' element={<LandingPage/>} />
@@ -23,7 +23,7 @@ function App(){
           <Route path='/form' element={<UserProfileForm/>} />
         </Routes>
         <Footer/>
-      </BrowserRouter>
+      </HashRouter>
     </>
   )
 }

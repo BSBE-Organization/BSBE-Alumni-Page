@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
-  const [toggle,setToggle] = useState('menu.png')
+  const [toggle,setToggle] = useState('home/menu.png')
   const [showlink,setShowlink] = useState(false);
   const click = ()=>{
-    if(toggle=='menu.png'){
-      setToggle('close.png')
+    if(toggle=='home/menu.png'){
+      setToggle('home/close.png')
       setShowlink(true)
     }
     else{
-      setToggle('menu.png')
+      setToggle('home/menu.png')
       setShowlink(false)
     }
     
@@ -27,7 +27,7 @@ const Navbar = () => {
           <li id='nav-btn'><Link to="/auth">Are you an Alumni?</Link></li>
         </ul>
 
-        <img src={toggle} onClick={click} alt="" id="toggle"/>
+        <img src={toggle} onClick={click} alt="toggle" id="toggle"/>
       </div>
       {showlink && 
         <div className="toggle-menu">
