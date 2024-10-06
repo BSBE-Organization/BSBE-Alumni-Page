@@ -1,234 +1,70 @@
-/* Container for events and alumni sections */
-.events-container {
+.events-container{
   width: 100%;
-  padding: 40px 20px;
-  box-sizing: border-box;
-}
-
-/* Upcoming Event Section */
-.upcoming-event-section {
-  margin-bottom: 60px;
-}
-
-.section-title {
-  font-size: 2.5rem; /* Base size */
-  font-weight: bold;
-  color: #0F6F41; /* Green color */
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-/* Adjusting the event card styles */
-.event-card {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Ensure the button is placed at the bottom */
-  align-items: center;
-  background-color: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-  margin: 0 15vw; /* Set 15vw margin from left and right */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.event-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.event-image-container {
-  width: 100%; /* Full width container */
-  height: auto; /* Let height adjust based on the image */
-  position: relative; /* For absolute positioning of the button */
-}
-
-.event-image {
-  display: block;
-  width: 100%; /* Full width image */
-  height: auto; /* Maintain the aspect ratio */
-  object-fit: cover; /* Ensure the image covers the container without distortion */
-}
-
-.register-btn {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  padding: 12px 3vw; /* Adjust padding to be responsive */
-  font-size: 1.2rem; /* Base font size */
-  background-color: #1db954;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.register-btn:hover {
-  background-color: #1aa34a;
-  transform: scale(1.05);
-}
-
-/* Notable Alumni Section */
-.notable-alumni-section {
-  margin-bottom: 60px;
-}
-
-.alumni-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
   justify-content: center;
+  align-items: center;
+  padding: 5vw;
+}
+.events-container h1{
+  color:rgb(15, 111, 65) ;
+}
+.events-container img{
+  width: 70vw;
+}
+.event-box{
+  margin: 5vw 10vw 5vw 10vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+.event-box a{
+  background-color: #0F8B4E;
+  color: white;
+  padding: 1vw;
+  border-radius: 10px;
+  align-items: center;
+  border: #0F8B4E solid 1px;
+}
+.event-box a:hover{
+  background-color: white;
+  color: #0F8B4E;
+  transition: 0.6s;
+}
+.description{
+  margin-right: 3vw;
+}
+.description h3{
+  margin: 0;
+  padding: 0;
+  font-size: 3vw;
+  text-align: left;
+  color: black;
+}
+.description p{
+  margin: 0;
+  padding: 0;
+  font-size: 1.8vw;
+  text-align: left;
+  color: black;
 }
 
-.alumni-card {
-  background-color: #e7f9f1;
-  border-radius: 15px;
-  padding: 25px 15px;
-  text-align: center;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.alumni-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.alumni-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 20px;
-  object-fit: cover;
-}
-
-.alumni-info h4 {
-  font-size: 1.4rem;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.alumni-info p {
-  font-size: 1rem;
-  color: #555;
-}
-
-/* Media Queries for Responsiveness */
 @media (max-width: 600px) {
-  .section-title {
-    font-size: 2rem; /* Adjust title size for smaller screens */
-  }
-
-  .event-card {
-    width: calc(100% - 30vw); /* Adjust width on smaller screens */
-    margin: 0 auto; /* Center the card */
-  }
-
-  .event-image {
+  .events-container img{
     width: 100%;
   }
-
-  .register-btn {
-    padding: 10px 5vw; /* Adjust padding for smaller screens */
-    font-size: 1rem; /* Adjust button font size */
+  .event-box{
+    margin: 2vw 3vw 5vw 2vw;
   }
-
-  .alumni-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  .description h3{
+    font-size: 4vw;
   }
-}
-
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 1.5rem; /* Smaller title for very small screens */
+  .description p{
+    font-size: 3vw;
   }
-
-  .event-card {
-    margin: 0 5vw; /* Reduce margin */
-  }
-
-  .register-btn {
-    padding: 8px 4vw; /* Smaller padding for the button */
-    font-size: 0.9rem; /* Smaller button font size */
-  }
-
-  .alumni-info h4 {
-    font-size: 1.2rem; /* Smaller name font size */
-  }
-
-  .alumni-info p {
-    font-size: 0.9rem; /* Smaller description font size */
-  }
-
-  .alumni-image {
-    width: 100px; /* Smaller image size */
-    height: 100px; /* Smaller image size */
-  }
-}
-/* Event Image Container */
-.event-image-container {
-  width: 100%; /* Full width container */
-  height: auto; /* Let height adjust based on the image */
-  position: relative; /* For absolute positioning of the button */
-}
-
-/* Event Image */
-.event-image {
-  display: block;
-  width: 100%; /* Full width image */
-  height: auto; /* Maintain the aspect ratio */
-  object-fit: cover; /* Ensure the image covers the container without distortion */
-}
-
-/* Register Button */
-.register-btn {
-  position: absolute;
-  bottom: 5%; /* Adjust button position relative to the image */
-  right: 5%; /* Adjust button position relative to the image */
-  padding: 1vw 4vw; /* Responsive padding based on viewport width */
-  font-size: 1.2rem; /* Base font size */
-  background-color: #1db954;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-/* Hover effect */
-.register-btn:hover {
-  background-color: #1aa34a;
-  transform: scale(1.05);
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-  .register-btn {
-    padding: 0.8vw 3.5vw; /* Reduce padding for medium screens */
-    font-size: 1rem; /* Reduce font size */
-  }
-}
-
-@media (max-width: 600px) {
-  .register-btn {
-    padding: 0.7vw 3vw; /* Further reduce padding */
-    font-size: 0.9rem; /* Further reduce font size */
-  }
-
-  .event-card {
-    width: calc(100% - 30vw); /* Adjust width on smaller screens */
-    margin: 0 auto; /* Center the card */
-  }
-}
-
-@media (max-width: 480px) {
-  .register-btn {
-    padding: 0.5vw 2.5vw; /* Smaller padding for the button */
-    font-size: 0.8rem; /* Smaller font size */
-  }
-
-  .event-card {
-    margin: 0 5vw; /* Reduce margin */
+  .event-box a{
+    border-radius: 5px;
   }
 }

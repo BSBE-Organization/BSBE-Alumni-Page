@@ -6,7 +6,7 @@
   justify-content: center; /* Center the boxes */
   position: relative; /* Ensure it's positioned for z-index to work */
   overflow-x: auto; /* Allow horizontal scrolling if necessary */
-  padding: 0 40px; /* Maintain padding on the sides */
+  padding: 5px 40px; /* Maintain padding on the sides */
 }
 
 /* Added to ensure the flex items don’t wrap */
@@ -33,6 +33,7 @@
 .stat-box h2 {
   font-size: 2rem;
   color: #0F6F41; /* Green color for numbers */
+  transition: all 0.5s ease; 
 }
 
 .stat-box p {
@@ -43,18 +44,19 @@
 /* Media Queries for Responsiveness */
 @media (max-width: 600px) {
   .stats-container {
-    gap: 20px; /* Reduce gap between boxes */
-    margin-top: -20px; /* Adjust margin for smaller screens */
+    margin: -45px 0px 0;
+    gap: 25px;
+    
   }
 
   .stat-box {
-    padding: 15px; /* Reduce padding */
+    padding: 5px; /* Reduce padding */
     flex: 0 1 180px; /* Allow smaller widths but maintain shape */
     max-width: 220px; /* Maximum width for the boxes */
   }
 
   .stat-box h2 {
-    font-size: 1.5rem; /* Smaller font size for numbers */
+    font-size: 1rem; /* Smaller font size for numbers */
   }
 
   .stat-box p {
@@ -69,15 +71,10 @@
   }
 
   .stat-box h2 {
-    font-size: 1.2rem; /* Further reduce font size for very small screens */
+    font-size: 1rem; /* Further reduce font size for very small screens */
   }
 
   .stat-box p {
     font-size: 0.8rem; /* Further reduce font size for very small screens */
   }
-}
-.stat-box h2 {
-  font-size: 2rem;
-  color: #0F6F41;
-  transition: all 0.5s ease; /* Smooth transition for the counting effect */
 }

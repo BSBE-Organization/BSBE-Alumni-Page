@@ -6,25 +6,25 @@ function Footer(){
             <div className="box1">
                 <div className="footer-description">
                     <img src="footer/iitgLogo.png" alt="IITG Logo" />
-                    <p>Department of Biosciences and Bioengineering Indian Institute of Technology, Guwahati</p>
+                    <p>Department of Biosciences and Bioengineering Indian Institute of Technology, Guwahati 781039</p>
                 </div>
                 <h3>Designed and Developed by BSBE students</h3>
             </div>
             <div className="box2">
-                <a href="/auth">IITG Website</a>
-                <a href="">BSBE Website</a>
+                <a href="https://www.iitg.ac.in/">IITG Website</a>
+                <a href="https://www.iitg.ac.in/biotech/">BSBE Website</a>
                 <div className="social">
-                    <img src="footer/instagram.png"/>
-                    <img src="footer/linkedin.png"/>
-                    <img src="footer/twitter.png"/>
+                    <a href="https://www.instagram.com/bsbe_iitguwahati/"><img src="footer/instagram.png"/></a>
+                    <a href="https://www.linkedin.com/in/dept-of-biosciences-and-bioengineering-iit-guwahati-11980a325/"><img src="footer/linkedin.png"/></a>
+                    <a href="https://x.com/BSBE_IITG"><img src="footer/twitter.png"/></a>
                 </div>
                 <div className="contact">
                     <img src="footer/phone.png" alt="" />
-                    <a href="tel:+911234567890">+91 1234 567 890</a>
+                    <a href="tel:0361-2582250">0361-2582250</a>
                 </div>
                 <div className="contact">
                     <img src="footer/mail.png" alt="" />
-                    <a href="mailto:contact@example.com">contact@example.com</a>
+                    <a href="mailto:biooff@iitg.ac.in">biooff@iitg.ac.in</a>
                 </div>
             </div>
         </div>

@@ -4,19 +4,14 @@ import "./styles/events.css";
 const Events = () => {
   return (
     <div className="events-container">
-      <div className="upcoming-event-section">
-        <h2 className="section-title">Upcoming Event</h2>
-        <div className="event-card">
-          <div className="event-image-container">
-            <img
-              className="event-image"
-              src="/event.png"
-              alt="BSBE Alumni Meet 2024"
-            />
-            <button className="register-btn">Register</button>{" "}
-            {/* Button inside image container */}
-          </div>
+      <h1>Upcoming Event</h1>
+      <img src="event.png" alt="" />
+      <div className="event-box">
+        <div className="description">
+          <h3>BSBE Alumni Meet 2024</h3>
+          <p>Dept. of Biosciences and Bioengineering will be hosting their first alumni meet on 26th and 27th October, 2024. Regular updates will be posted on</p>
         </div>
+        <a href="https://forms.gle/DSmgU3faXQwA9V5C6" target="blank">Register</a>
       </div>
 
       {/* Notable Alumni Section */}
