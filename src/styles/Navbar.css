@@ -25,10 +25,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #0F6F41;
 }
 #nav-btn{
   background-color: #0F8B4E;
   border-radius: 20px;
+  color: white;
 }
 .nav-bar li:hover{
   background-color: white;
