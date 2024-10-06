@@ -1,8 +1,33 @@
 import { auth } from '../../config';
 import { getDatabase, ref, set } from 'firebase/database';
 import { getAuth,OAuthProvider, GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 function Login(){
+    const navigate = useNavigate();
+    const server_URL = "http://localhost:8000/";
+
+    const verify = async(userdata)=>{
+      const response = await fetch(`${server_URL}login`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userdata),
+      });
+
+      const data = await response.json();
+      
+      if(data.success){
+        console.log('data:',data);
+        console.log('Message:',data.message);
+        navigate('/form');
+      } 
+      else{
+        console.error('Error', data.error);
+      }
+    };
+
+
     const handleOutlookLogin = async ()=>{
         const provider = new OAuthProvider('microsoft.com');
         provider.setCustomParameters({
@@ -22,7 +47,7 @@ function Login(){
             name:user.displayName
           }
           console.log('User logged in with Outlook:', userdata);
-          // verify(userdata);
+          verify(userdata);
 
           // Save user information to Realtime Database
           const usersRef = ref(getDatabase(), 'users/' + result.user.uid);
@@ -56,7 +81,7 @@ function Login(){
             name:user.displayName
           }
           console.log('User logged in with Google:', userdata);
-          // verify(userdata);
+          verify(userdata);
         } 
         catch (error){
           console.log(error);
