@@ -7,6 +7,8 @@
   padding: 5vw;
 }
 .events-container h1{
+  font-size: 3vw;
+  margin: 1vw 0 1vw 0;
   color:rgb(15, 111, 65) ;
 }
 .events-container img{
@@ -54,6 +56,9 @@
 @media (max-width: 600px) {
   .events-container img{
     width: 100%;
+  }
+  .events-container h1{
+    font-size: 6vw;
   }
   .event-box{
     margin: 2vw 3vw 5vw 2vw;
