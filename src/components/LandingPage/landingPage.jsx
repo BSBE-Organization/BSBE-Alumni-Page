@@ -1,6 +1,6 @@
-import "./styles/landingPage.css";
 import Stats from "../LandingPage/stats";
 import Events from "../LandingPage/Events";
+
 const LandingPage = () => {
   return (
     <>
@@ -16,4 +16,5 @@ const LandingPage = () => {
     </>
   );
 };
+
 export default LandingPage;
