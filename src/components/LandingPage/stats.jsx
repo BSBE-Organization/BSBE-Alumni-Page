@@ -30,19 +30,19 @@ const LandingPage = () => {
     <div className="stats-container">
       <div className="stat-box">
         <h2>
-          <CountUp end={1000} />+
+          <CountUp end={650} />+
         </h2>
         <p>Continuing Students</p>
       </div>
       <div className="stat-box">
         <h2>
-          <CountUp end={800} />+
+          <CountUp end={1500} />+
         </h2>
         <p>Graduated Students</p>
       </div>
       <div className="stat-box">
         <h2>
-          <CountUp end={1000} />+
+          <CountUp end={200} />+
         </h2>
         <p>Opted for Abroad Studies</p>
       </div>

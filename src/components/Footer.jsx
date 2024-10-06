@@ -26,6 +26,10 @@ function Footer(){
                     <img src="footer/mail.png" alt="" />
                     <a href="mailto:biooff@iitg.ac.in">biooff@iitg.ac.in</a>
                 </div>
+                <div className="contact">
+                    <img src="footer/mail.png" alt="" />
+                    <a href="mailto:bsbe_alum@iitg.ac.in">bsbe_alum@iitg.ac.in</a>
+                </div>
             </div>
         </div>
         </>
