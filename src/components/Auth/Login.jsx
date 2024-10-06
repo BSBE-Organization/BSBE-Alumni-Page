@@ -3,7 +3,6 @@ import { getDatabase, ref, set } from 'firebase/database';
 import { getAuth,OAuthProvider, GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
 
 function Login(){
-
     const handleOutlookLogin = async ()=>{
         const provider = new OAuthProvider('microsoft.com');
         provider.setCustomParameters({
@@ -16,10 +15,18 @@ function Login(){
           const credential = OAuthProvider.credentialFromResult(result);
           const accessToken = credential.accessToken;
           console.log(result.user);
+          const user=result.user;
+          const userdata = {
+            uid:user.uid,
+            email:user.email,
+            name:user.displayName
+          }
+          console.log('User logged in with Outlook:', userdata);
+          // verify(userdata);
 
           // Save user information to Realtime Database
           const usersRef = ref(getDatabase(), 'users/' + result.user.uid);
-          const userdata = await set(usersRef, {
+          const userData = await set(usersRef, {
             displayName: result.user.displayName,
             email: result.user.email,
           }).then(() => {
@@ -43,7 +50,13 @@ function Login(){
         try{
           const result = await signInWithPopup(auth,provider);
           const user = result.user;
-          console.log('User logged in with Google:', user);
+          const userdata = {
+            uid:user.uid,
+            email:user.email,
+            name:user.displayName
+          }
+          console.log('User logged in with Google:', userdata);
+          // verify(userdata);
         } 
         catch (error){
           console.log(error);

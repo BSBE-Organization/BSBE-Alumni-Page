@@ -93,7 +93,9 @@ export default function UserProfileForm() {
     <div
       className="min-h-screen bg-no-repeat bg-center bg-cover"
       style={{
-        backgroundImage: "url('/arun-chandran-xOSMdivrcFM-unsplash 1.png')"
+        backgroundImage: "url('home/bg.jpg')",
+        margin:"110px 0 0 0",
+        padding:"0 0 50px 0"
       }}
     >
       <div className="w-full pt-10 pb-4 text-center text-black">
