@@ -19,7 +19,7 @@ const LandingPage = () => {
       >
         {/* Background Image */}
         <img
-          src="/home/bg.jpg"
+          src="/bg.png"
           alt="Background"
           style={{
             position: "absolute",
