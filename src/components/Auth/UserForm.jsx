@@ -1,22 +1,28 @@
 import { Plus, Trash2 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 
 export default function UserProfileForm() {
+  const location = useLocation();
+  const userData = location.state?.data;
+  console.log(userData);
 
   const [formData, setFormData] = useState({
-    name: "",
-    degree: "",
-    graduationYear: "",
-    phone: "",
-    email: "",
-    location: "",
-    linkedin: "",
-    educationFields: [{ university: "", degree: "", year: "" }],
-    domain: "",
-    currentPosition: "",
-    company: "",
-    experience: ""
+    name: userData.name || undefined,
+    degree: userData.degree || undefined,
+    graduationYear: userData.graduationYear || undefined,
+    phone: userData.phone || undefined,
+    email: userData.email || undefined,
+    location: userData.location || undefined,
+    linkedin: userData.linkedin || undefined,
+
+    educationFields: userData.education || undefined,
+    work:userData.work,
+
+    domain: userData.name || undefined,
+    currentPosition: userData.name || undefined,
+    company: userData.name || undefined,
+    experience: userData.name || undefined,
   });
 
 
@@ -79,13 +85,26 @@ export default function UserProfileForm() {
   };
 
   const navigate = useNavigate()
+  const server_URL = "http://localhost:8000/";
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
-    // console.log("Form submitted with education fields:", educationFields);
-    localStorage.clear()
-    navigate('/')
+    const response = await fetch(`${server_URL}profile`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+    
+    if(data.success){
+      console.log('Response Data:',data);
+      console.log('Message:',data.message);
+    } 
+    else{
+      console.error('Error', data.error);
+    }
   };
 
   

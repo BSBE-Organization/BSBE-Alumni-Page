@@ -8,7 +8,7 @@ function Login(){
     const server_URL = "http://localhost:8000/";
 
     const verify = async(userdata)=>{
-      const response = await fetch(`${server_URL}login`, {
+      const response = await fetch(`${server_URL}auth`, {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -18,9 +18,10 @@ function Login(){
       const data = await response.json();
       
       if(data.success){
-        console.log('data:',data);
+        console.log('Response Data:',data);
         console.log('Message:',data.message);
-        navigate('/form');
+
+        navigate('/form', { state: {data:data.userdata} });
       } 
       else{
         console.error('Error', data.error);
