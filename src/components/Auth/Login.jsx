@@ -90,15 +90,15 @@ function Login(){
     };
 
     return(
-      <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "url('/bg.jpg')" }}>
+      <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "url('home/bg.jpg')" }}>
       <div className="relative z-0">
-        <main className="flex justify-center items-center min-h-[calc(100vh-80px)]">
+        <main className="flex justify-center items-center min-h-[calc(120vh-80px)]">
           {/* Increased the size of the card */}
           <div className="bg-white/80 backdrop-blur-md p-10 rounded-lg shadow-lg w-full max-w-lg">
             <h1 className="text-3xl font-medium text-center text-green-500 mb-8">Create/Update Profile</h1>
             <div className="space-y-6">
-              <button className="w-full flex items-center justify-start text-left pl-4 py-6 border border-gray-300 rounded hover:bg-gray-50">
-                <img onClick={handleGoogleLogin} src="data:image/png;base64,
+              <button onClick={handleGoogleLogin}  className="w-full flex items-center justify-start text-left pl-4 py-6 border border-gray-300 rounded hover:bg-gray-50">
+                <img src="data:image/png;base64,
                 iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTA
                 AALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJKSURBVHg
                 BvZTPaxNBFMffm93VpI2QQOqpyuhFBKFbUKmguIt6j9568z+Iihd/0YiCHgTTu2
