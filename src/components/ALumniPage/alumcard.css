@@ -1,0 +1,85 @@
+.dircard{
+    width: 30vw;
+    display: flex;
+    margin: 2vw;
+    padding: 2vw;
+    flex-direction: column;
+    border: 0.1px solid black;
+    border-radius: 15px;
+    background-color: #F9FFFC;
+}
+.dircard h1{
+    font-size: 2vw;
+    font-weight: 600;
+}
+.dircard hr{
+    color: #DDF1E6;
+}
+.dircard h2{
+    color: black;
+    font-weight: 500;
+}
+.dircard h3{
+    color: #425F52;
+    font-weight: lighter;
+}
+.dircard h4{
+    color: #0F8B4E;
+    font-weight: lighter;
+    margin: 0 1vw 0 0;
+}
+.IITG-eudcation{
+    display: flex;
+    flex-direction: row;
+}
+.title{
+    display: flex;
+    flex-direction: row;
+    margin: 1vw 0 1vw 0;
+}
+.title h3{
+    background-color: #E4FFF2;
+    padding: 0.6vw;
+    color: #3D5F50;
+    border-radius: 15px;
+}
+
+.alum-experience{
+    display: flex;
+    flex-direction: column;
+    margin: 1vw 0 2vw 0;
+}
+.alum-education{
+    display: flex;
+    flex-direction: column;
+    margin: 1vw 0 2vw 0;
+}
+.education-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.alum-social{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+
+}
+.alum-social img{
+    width: 3vw;
+}
+@media only screen and (max-width: 700px) {
+    .dircard{
+        width: 100%;
+        padding: 5vw;
+    }
+    .dircard h1{
+        font-size: 5vw;
+    }
+    .title,.alum-experience,.alum-education{
+        margin: 3vw 0 4vw 0;
+    }
+    .alum-social img{
+        width: 10vw;
+    }
+}
