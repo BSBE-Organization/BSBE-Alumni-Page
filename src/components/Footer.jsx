@@ -11,12 +11,12 @@ function Footer(){
                 <h3>Designed and Developed by BSBE students</h3>
             </div>
             <div className="box2">
-                <a href="https://www.iitg.ac.in/">IITG Website</a>
-                <a href="https://www.iitg.ac.in/biotech/">BSBE Website</a>
+                <a href="https://www.iitg.ac.in/" target="blank">IITG Website</a>
+                <a href="https://www.iitg.ac.in/biotech/" target="blank">BSBE Website</a>
                 <div className="social">
-                    <a href="https://www.instagram.com/bsbe_iitguwahati/"><img src="footer/instagram.png"/></a>
-                    <a href="https://www.linkedin.com/in/dept-of-biosciences-and-bioengineering-iit-guwahati-11980a325/"><img src="footer/linkedin.png"/></a>
-                    <a href="https://x.com/BSBE_IITG"><img src="footer/twitter.png"/></a>
+                    <a href="https://www.instagram.com/bsbe_iitguwahati/" target="blank"><img src="footer/instagram.png"/></a>
+                    <a href="https://www.linkedin.com/in/dept-of-biosciences-and-bioengineering-iit-guwahati-11980a325/" target="blank"><img src="footer/linkedin.png"/></a>
+                    <a href="https://x.com/BSBE_IITG" target="blank"><img src="footer/twitter.png"/></a>
                 </div>
                 <div className="contact">
                     <img src="footer/phone.png" alt="" />
