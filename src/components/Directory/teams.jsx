@@ -4,7 +4,7 @@ import Card from './card.tsx'; // Adjust the import path as necessary
 
 const TeamPage = () => {
   const teamfound = [
-    { name: 'Dhiyanesh G', description: 'Developer', img: '../../senphoto.jpg', phone: '7092695851', email: 'g.dhiyanesh@iitg.ac.in', linkedin: 'https://linkedin.com/in/dhiyanesh-g-2115432a9', batch: '2026', programme: 'B.Tech' },
+    { name: 'Aditya Jindal', description: 'Coordinator', img: '../../senphoto.jpg', phone: '8447753616', email: 'aditya.jindal@iitg.ac.in', linkedin: 'https://www.linkedin.com/in/aditya-jindal-/', batch: '2025', programme: 'B.Tech' },
     { name: 'Person 2', description: 'Designer', img: '/path-to-image2.jpg', phone: '1234567890', email: 'person2@example.com', linkedin: 'https://linkedin.com/in/person2', batch: '2026', programme: 'B.Tech' },
     // Add more team members here
   ];
