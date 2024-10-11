@@ -5,12 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 function Login(){
     const navigate = useNavigate();
-    const server_URL = "http://localhost:8000/";
+    const server_URL = "https://alumni-server-lcxk.onrender.com/";
 
     const verify = async(userdata)=>{
       const response = await fetch(`${server_URL}auth`, {
         method: 'POST',
-        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userdata),
       });
@@ -18,7 +17,7 @@ function Login(){
       const data = await response.json();
       
       if(data.success){
-        console.log('Response Data:',data);
+        console.log('Response Data:',data.userdata);
         console.log('Message:',data.message);
 
         navigate('/form', { state: {data:data.userdata} });
@@ -92,7 +91,7 @@ function Login(){
     return(
       <div className="min-h-screen bg-cover bg-center relative" style={{ backgroundImage: "url('home/bg.jpg')" }}>
       <div className="relative z-0">
-        <main className="flex justify-center items-center min-h-[calc(120vh-80px)]">
+        <main className="flex justify-center items-center min-h-[calc(130vh-80px)]">
           {/* Increased the size of the card */}
           <div className="bg-white/80 backdrop-blur-md p-10 rounded-lg shadow-lg w-full max-w-lg">
             <h1 className="text-3xl font-medium text-center text-green-500 mb-8">Create/Update Profile</h1>

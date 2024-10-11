@@ -1,8 +1,14 @@
 .alum-list{
     width: 100%;
-    margin: 5vw 0 0 0;
+    margin: 10vw 0 0 0;
     display: flex;
     flex-direction: column;
+}
+#alumni-heading{
+    margin: 2vw 0 0 5vw;
+    font-size: 2rem;
+    color: #0F8B4E;
+    text-decoration: overline;
 }
 .alum-box{
     width: 100%;
@@ -16,5 +22,8 @@
     .alum-box{
         flex-direction: column;
         padding: 10vw;
+    }
+    .alum-list{
+        margin: 20vw 0 0 0;
     }
 }

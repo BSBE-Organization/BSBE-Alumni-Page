@@ -1,0 +1,36 @@
+.teams{
+    width: 100%;
+    padding: 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.teams h1{
+    font-size: 2rem;
+}
+.team-row{
+    margin: 2vw 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.team-row h1{
+    font-size: 1.5;
+    color: #0F8B4E;
+    text-decoration:overline;
+}
+.team-row-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+@media only screen and (max-width:650px){
+    .teams{
+        margin: 10vw 0;
+    }
+    .team-row-card{
+        flex-direction: column;
+        width: 80vw;
+    }
+}

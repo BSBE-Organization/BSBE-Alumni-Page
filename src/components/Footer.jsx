@@ -6,9 +6,11 @@ function Footer(){
             <div className="box1">
                 <div className="footer-description">
                     <img src="footer/iitgLogo.png" alt="IITG Logo" />
-                    <p>Department of Biosciences and Bioengineering</p>
-                    <p>Indian Institute of Technology, Guwahati</p>
-                    <p>781039</p>
+                    <div className="footer-description-text">
+                        <p>Department of Biosciences and Bioengineering</p>
+                        <p>Indian Institute of Technology Guwahati</p>
+                        <p>Guwahati 781039</p>
+                    </div>
                 </div>
                 <h3>Designed and Developed by BSBE students</h3>
             </div>

@@ -1,12 +1,28 @@
+import { useEffect, useState } from 'react';
 import './alumcard.css'
-function AlumCard(){
+function AlumCard({data}){
+    console.log(data);
+    const [name,setName] = useState('');
+    const [program,setProgram] = useState('');
+    const [batch,setBatch] = useState('');
+    const [education,setEducation] = useState([]);
+    const [work,setWork] = useState([]);
+
+    useEffect(() => {
+        if(data){
+            setName(data.name || 'user');
+            setBatch(data.YearOfGraduation);
+            setProgram(data.degree);
+        }
+        
+    }, [data]);
     return(
         <>
             <div className="dircard">
-                <h1>Sumit Kumar</h1>
+                <h1>{name}</h1>
                 <div className="IITG-eudcation">
-                    <h4>PhD.</h4>
-                    <h3>Class of 2016</h3>
+                    <h4>{program}</h4>
+                    <h3>Class of {batch}</h3>
                 </div>
                 <div className="title">
                     <h3>Software Development</h3>

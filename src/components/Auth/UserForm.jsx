@@ -1,94 +1,61 @@
 import { Plus, Trash2 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate,useLocation  } from "react-router-dom";
 
 export default function UserProfileForm() {
   const location = useLocation();
-  const userData = location.state?.data;
-  console.log(userData);
+  const data = location.state?.data;
+  console.log('data',data);
 
   const [formData, setFormData] = useState({
-    name: userData.name || undefined,
-    degree: userData.degree || undefined,
-    graduationYear: userData.graduationYear || undefined,
-    phone: userData.phone || undefined,
-    email: userData.email || undefined,
-    location: userData.location || undefined,
-    linkedin: userData.linkedin || undefined,
-
-    educationFields: userData.education || undefined,
-    work:userData.work,
-
-    domain: userData.name || undefined,
-    currentPosition: userData.name || undefined,
-    company: userData.name || undefined,
-    experience: userData.name || undefined,
+    uid: data.uid,
+    name: data.name,
+    email: data.email,
+    degree: data.degree,
+    YearOfGraduation: data.YearOfGraduation,
+    phone: data.phone || "Phone", 
+    location: data.location,
+    linkedin: data.linkedin,
+    education: data.education,
+    work:data.work,
   });
 
 
-  // Function to retrieve data from localStorage
-  const getInitialEducationFields = () => {
-    const savedFields = localStorage.getItem("educationFields");
-    if (savedFields) {
-      try {
-        return JSON.parse(savedFields);
-      } catch (error) {
-        console.error("Error parsing educationFields from localStorage:", error);
-      }
-    }
-    // Default initial state if nothing is saved
-    return [
-      { university: "MIT", degree: "PhD", year: "2022" }
-    ];
-  };
 
-  const [educationFields, setEducationFields] = useState(getInitialEducationFields);
+  const [educationFields, setEducationFields] = useState([{ university: "", degree: "", year: "" }]);
+  const [work,setWork] = useState([{domain: "software-development", currentPosition: "", company: "", experience: ""}])
 
-  // useEffect to update localStorage whenever educationFields changes
-  useEffect(() => {
-    localStorage.setItem("educationFields", JSON.stringify(educationFields));
-  }, [educationFields]);
-
-  const handleAddMore = () => {
+  const addEducationField = () => {
     setEducationFields([
       ...educationFields,
       { university: "", degree: "", year: "" }
-    ]);
+    ])
   };
 
-  const handleRemoveField = (index) => {
+  const addWorkField = () => {
+    setWork([
+      ...work,
+      {domain: "software-development", currentPosition: "", company: "", experience: ""}
+    ])
+  }
+
+  const handleRemoveEducationField = (index) => {
     const updatedFields = educationFields.filter((_, i) => i !== index);
     setEducationFields(updatedFields);
-    setFormData((prevData) => ({
-      ...prevData,
-      educationFields:updatedFields
-    }));
+  };
+  const handleRemoveWorkField = (index) => {
+    const updatedFields = work.filter((_, i) => i !== index);
+    setWork(updatedFields);
   };
 
-  const handleFieldChange = (index, field, value) => {
-    const updatedFields = educationFields.map((item, i) =>
-      i === index ? { ...item, [field]: value } : item
-    );
-    setEducationFields(updatedFields);
-    setFormData((prevData) => ({
-      ...prevData,
-      educationFields:updatedFields
-    }));
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-
-  const navigate = useNavigate()
   const server_URL = "http://localhost:8000/";
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    formData.education = educationFields;
+    formData.work = work;
+    console.log(formData);
+    console.log(educationFields);
+    console.log(work);
     const response = await fetch(`${server_URL}profile`, {
       method: 'POST',
       credentials: 'include',
@@ -135,9 +102,8 @@ export default function UserProfileForm() {
                     type="text" 
                     id="name" 
                     name="name"
-                    placeholder="Enter your name" 
-                    value={formData.name} 
-                    onChange={handleInputChange}
+                    placeholder={formData.name}
+                    onChange={(e) => formData.name = e.target.value}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                   </div>
                   <div>
@@ -146,8 +112,8 @@ export default function UserProfileForm() {
                     type="text" 
                     id="degree" 
                     name="degree"
-                    value={formData.degree} 
-                    onChange={handleInputChange}
+                    onChange={(e) => formData.degree = e.target.value}
+                    placeholder={formData.degree}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                   </div>
                   <div>
@@ -156,8 +122,8 @@ export default function UserProfileForm() {
                     type="text" 
                     id="graduationYear"
                     name="graduationYear" 
-                    value={formData.graduationYear} 
-                    onChange={handleInputChange}
+                    placeholder={formData.YearOfGraduation}
+                    onChange={(e) => formData.YearOfGraduation = e.target.value}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                   </div>
                 </div>
@@ -174,9 +140,8 @@ export default function UserProfileForm() {
                       type="tel" 
                       id="phone"
                       name="phone" 
-                      placeholder="Phone number" 
-                      value={formData.phone} 
-                      onChange={handleInputChange}
+                      placeholder={formData.phone} 
+                      onChange={(e) => formData.phone = e.target.value}
                       className="flex-1 px-3 py-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
                   </div>
@@ -186,8 +151,9 @@ export default function UserProfileForm() {
                     type="email" 
                     id="email" 
                     name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
+                    placeholder={formData.email}
+                    onChange={(e) => formData.email = e.target.value}
+                    disabled
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                   </div>
                 </div>
@@ -199,8 +165,8 @@ export default function UserProfileForm() {
                     type="text" 
                     id="location"
                     name="location"
-                    value={formData.location} 
-                    onChange={handleInputChange}
+                    placeholder={formData.location}
+                    onChange={(e) => formData.location = e.target.value}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                   </div>
                   <div>
@@ -209,9 +175,8 @@ export default function UserProfileForm() {
                     type="text" 
                     id="linkedin" 
                     name="linkedin"
-                    placeholder="Your LinkedIn Profile" 
-                    value={formData.linkedin}
-                    onChange={handleInputChange}
+                    placeholder={formData.linkedin} 
+                    onChange={(e) => formData.linkedin = e.target.value}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                   </div>
                 </div>
@@ -219,7 +184,7 @@ export default function UserProfileForm() {
 
               <section>
                 <h2 className="text-2xl font-semibold mb-4 text-gray-800">Education</h2>
-                {educationFields.map((field, index) => (
+                {formData.education.map((field, index) => (
                   <div key={index} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div>
@@ -227,8 +192,8 @@ export default function UserProfileForm() {
                         <input
                           type="text"
                           id={`university-${index}`}
-                          value={field.university}
-                          onChange={(e) => handleFieldChange(index, "university", e.target.value)}
+                          placeholder={field.university}
+                          disabled
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                       </div>
@@ -237,8 +202,8 @@ export default function UserProfileForm() {
                         <input
                           type="text"
                           id={`degree-${index}`}
-                          value={field.degree}
-                          onChange={(e) => handleFieldChange(index, "degree", e.target.value)}
+                          placeholder={field.degree}
+                          disabled
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                       </div>
@@ -248,15 +213,59 @@ export default function UserProfileForm() {
                           <input
                             type="text"
                             id={`year-${index}`}
-                            value={field.year}
-                            onChange={(e) => handleFieldChange(index, "year", e.target.value)}
+                            placeholder={field.year}
+                            disabled
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                           />
-                          {educationFields.length > 1 && (
+                          { (
                             <button
                               type="button"
                               className="absolute right-2 top-2 text-red-500 hover:text-red-700 focus:outline-none"
-                              onClick={() => handleRemoveField(index)}
+                              onClick={() => handleRemoveEducationField(index)}
+                            >
+                              <Trash2 className="w-5 h-5" />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                {educationFields.map((field, index) => (
+                  <div key={index} className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div>
+                        <label htmlFor={`university-${index}`} className="block text-sm font-medium text-gray-700 mb-1">University</label>
+                        <input
+                          type="text"
+                          id={`university-${index}`}
+                          onChange={(e) => educationFields[index].university = e.target.value}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor={`degree-${index}`} className="block text-sm font-medium text-gray-700 mb-1">Degree</label>
+                        <input
+                          type="text"
+                          id={`degree-${index}`}
+                          onChange={(e) => educationFields[index].degree = e.target.value}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor={`year-${index}`} className="block text-sm font-medium text-gray-700 mb-1">Year of Graduation</label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            id={`year-${index}`}
+                            onChange={(e) => educationFields[index].year = e.target.value}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          />
+                          { (
+                            <button
+                              type="button"
+                              className="absolute right-2 top-2 text-red-500 hover:text-red-700 focus:outline-none"
+                              onClick={() => handleRemoveEducationField(index)}
                             >
                               <Trash2 className="w-5 h-5" />
                             </button>
@@ -271,7 +280,7 @@ export default function UserProfileForm() {
                   <button
                     type="button"
                     className="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                    onClick={handleAddMore}
+                    onClick={addEducationField}
                   >
                     <Plus className="w-4 h-4 mr-2" />
                     Add More
@@ -281,43 +290,125 @@ export default function UserProfileForm() {
 
               <section>
                 <h2 className="text-2xl font-semibold mb-4 text-gray-800">Work Experience</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {formData.work.map((field,index) => (
+                  <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="domain" className="block text-sm font-medium text-gray-700 mb-1">Domain</label>
-                    <select id="domain" defaultValue="software-development" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <label htmlFor={`domain-${index}`} className="block text-sm font-medium text-gray-700 mb-1">Domain</label>
+                    <input 
+                    type="text"
+                    id={`domain-${index}`}
+                    placeholder={field.domain}
+                    disabled
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  </div>
+                  <div>
+                    <label htmlFor={`currentPosition-${index}`} className="block text-sm font-medium text-gray-700 mb-1">Current Position</label>
+                    <input 
+                    type="text"
+                    id={`currentPosition-${index}`}
+                    placeholder={field.currentPosition}
+                    disabled
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  </div>
+                  <div>
+                    <label htmlFor={`company-${index}`} className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                    <input 
+                    type="text"
+                    id={`company-${index}`}
+                    placeholder={field.company}
+                    disabled
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                  </div>
+                  <div>
+                    <label htmlFor={`experience-${index}`} className="block text-sm font-medium text-gray-700 mb-1">Years of Experience</label>
+                    <div className="relative">
+                    <input 
+                    type="text"
+                    id={`experience-${index}`}
+                    placeholder={field.experience}
+                    disabled
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+                    {(
+                            <button
+                              type="button"
+                              className="absolute right-2 top-2 text-red-500 hover:text-red-700 focus:outline-none"
+                              onClick={() => handleRemoveWorkField(index)}
+                            >
+                              <Trash2 className="w-5 h-5" />
+                            </button>
+                    )}
+                    </div>
+                  </div>
+                </div>
+                ))}
+                {work.map((field,index) => (
+                  <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor={`domain-${index}`} className="block text-sm font-medium text-gray-700 mb-1">Domain</label>
+                    <select 
+                    id={`domain-${index}`} 
+                    value={field.domain || "software-development"} 
+                    onChange={(e) => {
+                      const updatedWork = [...work];
+                      updatedWork[index].domain = e.target.value; 
+                      setWork(updatedWork); 
+                    }}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                       <option value="software-development">Software Development</option>
+                      <option value="data-analysis">Data Analysis</option>
+                      <option value="project-management">Project Management</option>
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="current-position" className="block text-sm font-medium text-gray-700 mb-1">Current Position</label>
+                    <label htmlFor={`currentPosition-${index}`} className="block text-sm font-medium text-gray-700 mb-1">Current Position</label>
                     <input 
-                    type="text" 
-                    id="currentPosition" 
-                    name="currentPosition" 
-                    value={formData.currentPosition}
-                    onChange={handleInputChange} 
+                    type="text"
+                    id={`currentPosition-${index}`}
+                    onChange={(e) => work[index].currentPosition = e.target.value}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                   </div>
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                    <label htmlFor={`company-${index}`} className="block text-sm font-medium text-gray-700 mb-1">Company</label>
                     <input 
-                    type="text" 
-                    id="company" 
-                    name="company" 
-                    value={formData.company}
-                    onChange={handleInputChange} 
+                    type="text"
+                    id={`company-${index}`}
+                    onChange={(e) => work[index].company = e.target.value}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                   </div>
                   <div>
-                    <label htmlFor="experience" className="block text-sm font-medium text-gray-700 mb-1">Years of Experience</label>
+                    <label htmlFor={`experience-${index}`} className="block text-sm font-medium text-gray-700 mb-1">Years of Experience</label>
+                    <div className="relative">
                     <input 
-                    type="text" 
-                    id="experience" 
-                    name="experience" 
-                    value={formData.experience}
-                    onChange={handleInputChange} 
+                    type="text"
+                    id={`experience-${index}`}
+                    onChange={(e) => work[index].experience = e.target.value} 
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+                    { (
+                            <button
+                              type="button"
+                              className="absolute right-2 top-2 text-red-500 hover:text-red-700 focus:outline-none"
+                              onClick={() => handleRemoveWorkField(index)}
+                            >
+                              <Trash2 className="w-5 h-5" />
+                            </button>
+                    )}
+                    </div>
                   </div>
+                </div>
+                ))}
+                
+
+                <div className="flex justify-center w-full mt-4">
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    onClick={addWorkField}
+                  >
+                    <Plus className="w-4 h-4 mr-2" />
+                    Add More
+                  </button>
                 </div>
               </section>
 
