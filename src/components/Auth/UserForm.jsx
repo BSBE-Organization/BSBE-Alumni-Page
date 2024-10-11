@@ -48,7 +48,7 @@ export default function UserProfileForm() {
     setWork(updatedFields);
   };
 
-  const server_URL = "http://localhost:8000/";
+  const server_URL = "https://alumni-server-lcxk.onrender.com/";
   const handleSubmit = async (e) => {
     e.preventDefault();
     formData.education = educationFields;
