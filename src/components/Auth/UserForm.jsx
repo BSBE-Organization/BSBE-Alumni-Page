@@ -58,7 +58,6 @@ export default function UserProfileForm() {
     console.log(work);
     const response = await fetch(`${server_URL}profile`, {
       method: 'POST',
-      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
     });
