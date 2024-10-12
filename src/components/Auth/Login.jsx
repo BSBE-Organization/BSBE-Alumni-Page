@@ -2,10 +2,9 @@ import { auth } from '../../config';
 import { getDatabase, ref, set } from 'firebase/database';
 import { getAuth,OAuthProvider, GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-
+import { server_URL } from '../../Var'
 function Login(){
     const navigate = useNavigate();
-    const server_URL = "https://alumni-server-lcxk.onrender.com/";
 
     const verify = async(userdata)=>{
       const response = await fetch(`${server_URL}auth`, {
@@ -20,7 +19,7 @@ function Login(){
         console.log('Response Data:',data.userdata);
         console.log('Message:',data.message);
 
-        navigate('/form', { state: {data:data.userdata} });
+        navigate('/profile', { state: {data:data.userdata} });
       } 
       else{
         console.error('Error', data.error);

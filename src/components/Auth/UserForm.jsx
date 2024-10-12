@@ -1,6 +1,7 @@
 import { Plus, Trash2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate,useLocation  } from "react-router-dom";
+import { server_URL } from '../../Var'
 
 export default function UserProfileForm() {
   const location = useLocation();
@@ -48,7 +49,6 @@ export default function UserProfileForm() {
     setWork(updatedFields);
   };
 
-  const server_URL = "https://alumni-server-lcxk.onrender.com/";
   const handleSubmit = async (e) => {
     e.preventDefault();
     formData.education = educationFields;
@@ -107,13 +107,17 @@ export default function UserProfileForm() {
                   </div>
                   <div>
                     <label htmlFor="degree" className="block text-sm font-medium text-gray-700 mb-1">Degree</label>
-                    <input 
+                    <select 
                     type="text" 
                     id="degree" 
                     name="degree"
                     onChange={(e) => formData.degree = e.target.value}
                     placeholder={formData.degree}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="B.Tech">B.Tech</option>
+                    <option value="M.Tech">M.Tech</option>
+                    <option value="PhD">PhD</option>
+                    </select>
                   </div>
                   <div>
                     <label htmlFor="graduation-year" className="block text-sm font-medium text-gray-700 mb-1">Year of Graduation</label>

@@ -8,12 +8,13 @@ import AlumList from './components/AlumniPage/AlumList.jsx';
 import Login from './components/Auth/Login.jsx';
 import UserProfileForm from './components/Auth/UserForm.jsx';
 import Teams from './components/ALumniPage/Team.jsx';
+import Profile from './components/ALumniPage/Profile.jsx';
 import { BrowserRouter,HashRouter,Route, Routes} from 'react-router-dom'
 function App(){
   
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
         <Navbar/>
         <Routes>
           <Route path='/' element={<LandingPage/>} />
@@ -21,9 +22,10 @@ function App(){
           <Route path='/directory' element={<AlumList/>} />
           <Route path='/auth' element={<Login/>} />
           <Route path='/form' element={<UserProfileForm/>} />
+          <Route path='/profile' element={<Profile/>} />
         </Routes>
         <Footer/>
-      </HashRouter>
+      </BrowserRouter>
     </>
   )
 }

@@ -10,6 +10,11 @@
     color: #0F8B4E;
     text-decoration: overline;
 }
+#loading{
+    margin: 1vw 0 1vw 5vw;
+    font-size: 1rem;
+    color: #6E6E6E;
+}
 .alum-box{
     width: 100%;
     padding: 2vw 5vw 0 5vw;
@@ -18,12 +23,78 @@
     justify-content: center;
     align-items: center;
 }
+.filter{
+    height: 6vh;
+    margin: 1vw 0 1vw 5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+.filter select{
+    width: 10vw;
+    color: #0F8B4E;
+    border: 1px solid #6E6E6E;
+    padding: 0vw 0vw 0vw 1vw;
+    border-radius: 10px;
+    margin: 0 0 0 2vw;
+}
+.filter input{
+    width: 7vw;
+    color: #6E6E6E;
+    border: 1px solid #6E6E6E;
+    border-radius: 10px;
+    margin: 0 0 0 2vw;
+    padding-left: 1vw;
+    outline: none;
+    text-align: left;
+}
+.filter input::placeholder{
+    color: #0F8B4E;
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F1F1F1;
+    color: #6E6E6E;
+    padding: 0.5vw 1vw;
+    border-radius: 10px;
+}
+.search input{
+    background-color: #F1F1F1;
+    border: none;
+    margin: 0 0 0 1vw;
+    width: 15vw;
+}
+.search img{
+    width: 2vw;
+    height: 2vw;
+}
 @media only screen and (max-width: 700px) {
     .alum-box{
         flex-direction: column;
-        padding: 10vw;
+        padding: 2vw 5vw 2vw 5vw;
     }
     .alum-list{
         margin: 20vw 0 0 0;
+    }
+    .filter{
+        height: 5vh;
+        margin: 1vw 0 1vw 5vw;
+    }
+    .filter select{
+        width: 20vw;
+    }
+    .filter input{
+        width: 12vw;
+        text-align: center;
+    }
+    .search input{
+        width: 20vw;
+    }
+    .search img{
+        width: 4vw;
+        height: 4vw;
     }
 }
