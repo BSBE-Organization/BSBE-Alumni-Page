@@ -8,6 +8,10 @@ function AlumCard({data}){
     const [location,setLocation] = useState('');
     const [education,setEducation] = useState([]);
     const [work,setWork] = useState([]);
+    const [email,setEmail] = useState('');
+    const [phone,setPhone] = useState('');
+    const [linkedin,setLinkedin] = useState('');
+
 
     useEffect(() => {
         if(data){
@@ -24,6 +28,15 @@ function AlumCard({data}){
             if(data.location){
                 setLocation(data.location);
             } 
+            if(data.linkedin){
+                setLinkedin(data.linkedin);
+            }
+            if(data.phone){
+                setPhone(data.phone);
+            }
+            if(data.email){
+                setEmail(data.email);
+            }
         }
         
     }, [data]);
@@ -62,9 +75,9 @@ function AlumCard({data}){
                     ))}   
                 </div>
                 <div className="alum-social">
-                    <a href="tel:1234567890" target=''><img src="images/phone.png"/></a>
-                    <a href="mailto:skrsumit250@gmail.com" target='blank'><img src="images/mail.png"/></a>
-                    <a href="https://www.linkedin.com/in/sumit-kumar-iitg/" target='blank'><img src="images/linkedin.png"/></a>
+                    <a href={phone} target=''><img src="images/phone.png"/></a>
+                    <a href={email} target='blank'><img src="images/mail.png"/></a>
+                    <a href={linkedin} target='blank'><img src="images/linkedin.png"/></a>
                 </div>
             </div>
         </>
