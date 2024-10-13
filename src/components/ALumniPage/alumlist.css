@@ -66,6 +66,7 @@
     border: none;
     margin: 0 0 0 1vw;
     width: 15vw;
+    text-align: left;
 }
 .search img{
     width: 2vw;

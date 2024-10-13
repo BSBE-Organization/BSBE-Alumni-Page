@@ -15,8 +15,8 @@ function Footer(){
                 <h3>Designed and Developed by BSBE students</h3>
             </div>
             <div className="box2">
-                <a href="https://www.iitg.ac.in/" target="blank">IITG Website</a>
-                <a href="https://www.iitg.ac.in/biotech/" target="blank">BSBE Website</a>
+                <div className="box2-link"><a href="https://www.iitg.ac.in/" target="blank">IITG Website</a></div>
+                <div className="box2-link"><a href="https://www.iitg.ac.in/biotech/" target="blank">BSBE Website</a></div>
                 <div className="social">
                     <a href="https://www.instagram.com/bsbe_iitguwahati/" target="blank"><img src="footer/instagram.png"/></a>
                     <a href="https://www.linkedin.com/in/dept-of-biosciences-and-bioengineering-iit-guwahati-11980a325/" target="blank"><img src="footer/linkedin.png"/></a>

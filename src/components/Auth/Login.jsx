@@ -5,6 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { server_URL } from '../../Var'
 function Login(){
     const navigate = useNavigate();
+    const storedUserData = localStorage.getItem('userData');
+    if (storedUserData) {
+      const userdata = JSON.parse(storedUserData);
+      navigate('/profile');
+    }
 
     const verify = async(userdata)=>{
       const response = await fetch(`${server_URL}auth`, {
@@ -19,7 +24,12 @@ function Login(){
         console.log('Response Data:',data.userdata);
         console.log('Message:',data.message);
 
-        navigate('/profile', { state: {data:data.userdata} });
+        localStorage.setItem('userData', JSON.stringify(data.userdata));
+        setTimeout(() => {
+          localStorage.removeItem('userData');
+        }, 1000*60*5);
+
+        navigate('/profile');
       } 
       else{
         console.error('Error', data.error);

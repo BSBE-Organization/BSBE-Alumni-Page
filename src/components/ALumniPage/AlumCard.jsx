@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import './alumcard.css'
 function AlumCard({data}){
     const [name,setName] = useState('');
-    const [program,setProgram] = useState('');
-    const [batch,setBatch] = useState('');
-    const [domain,setDomain] = useState('');
+    const [program,setProgram] = useState('NA');
+    const [batch,setBatch] = useState('NA');
+    const [domain,setDomain] = useState('NA');
     const [location,setLocation] = useState('');
     const [education,setEducation] = useState([]);
     const [work,setWork] = useState([]);
@@ -45,6 +45,7 @@ function AlumCard({data}){
 
                 <div className="alum-experience">
                     <h3>Work Experience</h3>
+                    {work.length==0 && <li>NA</li>}
                     {work.map((value,index)=>(
                         <li key={index}>{value.role} at {value.company}, {value.location}</li>
                     ))}
@@ -54,6 +55,7 @@ function AlumCard({data}){
 
                 <div className="alum-education">
                     <h3>Education</h3>
+                    {education.length==0 && <li>NA</li>}
                     {education.map((value,index)=>(
                         <div className="education-list" key={index}>
                         <li>{value.degree} at {value.university}</li>

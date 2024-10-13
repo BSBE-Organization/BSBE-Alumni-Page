@@ -42,17 +42,17 @@ function AlumList(){
             let filtered = alumni;
             if (degree) {
                 console.log('degree',degree);
-                filtered = filtered.filter(alum => alum.education[0].degree == degree);
+                filtered = filtered.filter(alum => alum.education[0] && alum.education[0].degree == degree);
             }
             if (domain) {
                 console.log('domain',domain);
 
-                filtered = filtered.filter(alum => alum.work[0].domain == domain);
+                filtered = filtered.filter(alum => alum.work[0] &&  alum.work[0].domain == domain);
             }
             if (year) {
                 console.log('year',year);
 
-                filtered = filtered.filter(alum => alum.education[0].year == year);
+                filtered = filtered.filter(alum => alum.education[0] &&  alum.education[0].year == year);
             }
             if (keyword) {
                 filtered = filtered.filter(alum => 
@@ -68,6 +68,7 @@ function AlumList(){
                         
                     )) ||
                     (alum.work && alum.work.some(job => 
+                        (job.domain && job.domain.toLowerCase().includes(keyword.toLowerCase())) || 
                         (job.role && job.role.toLowerCase().includes(keyword.toLowerCase())) || 
                         (job.company && job.company.toLowerCase().includes(keyword.toLowerCase())) 
                     ))
@@ -101,13 +102,13 @@ function AlumList(){
                         <input type="text" value={keyword} onChange={(e) => setKeyword(e.target.value)}/>
                     </div>
                     <select name="" id="" value={degree} onChange={(e) => setDegree(e.target.value)}>
-                        <option value="Degree">Degree</option>
+                        <option value="">Degree</option>
                         <option value="B.Tech" >B.Tech</option>
                         <option value="M.Tech">M.Tech</option>
                         <option value="PhD">PhD</option>
                     </select>
                     <select name="" id="" value={domain} onChange={(e) => setDomain(e.target.value)}>
-                        <option value="Domain">Domain</option>
+                        <option value="">Domain</option>
                         <option value="Software">Software</option>
                         <option value="Consulting">Consulting</option>
                         <option value="Product">Product</option>
@@ -119,7 +120,7 @@ function AlumList(){
                     <input type="text" placeholder='Year' value={year} onChange={(e) => setYear(e.target.value)}/>
                 </div>
                 {alumni.length==0 && <h1 id='loading'>Loading.....</h1>}
-                {alumni.length>0 && <h1 id='loading'>Search Results ({filteredAlumni.length})</h1>}
+                {alumni.length>0 && <h1 id='loading'>Search Results {keyword && <>for {keyword}</>} ({filteredAlumni.length})</h1>}
                 {chunkData.map((chunk,index)=>(
                     <div className="alum-box" key={index}>
                         {chunk.map((item,idx)=>(

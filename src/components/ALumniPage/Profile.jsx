@@ -1,38 +1,69 @@
 import './profile.css'
 import { useState, useEffect } from "react";
-import { useNavigate,useLocation  } from "react-router-dom"
+import { useNavigate,useLocation, Navigate  } from "react-router-dom"
 import { server_URL } from '../../Var'
 
 function Profile(){
     const location = useLocation();
-    const data = location.state?.data;
-    console.log('data',data);
-
+    const storedUserData = localStorage.getItem('userData');
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        uid: data.uid,
-        name: data.name,
-        email: data.email,
-        degree: data.degree,
-        YearOfGraduation: data.YearOfGraduation,
-        phone: data.phone, 
-        location: data.location,
-        linkedin: data.linkedin,
-        education: data.education,
-        work:data.work,
+        uid: "",
+        name: "",
+        email: "",
+        degree: "",
+        phone: "", 
+        location: "",
+        linkedin: "",
+        education: "",
+        work: "",
     });
 
-    const [education, setEducation] = useState([{ university: "IIT Guwahati", degree: "", year: "" }]);
-    const [work,setWork] = useState([{domain: "", role: "", company: "", location: ""}]);
-    
+    const [education, setEducation] = useState([{ university: "IIT Guwahati", degree: "NA", year: "NA" }]);
+    const [work,setWork] = useState([{domain: "NA", role: "NA", company: "NA", location: "NA"}]);
+    useEffect(()=>{
+        if (storedUserData) {
+            const data = JSON.parse(storedUserData);
+            console.log(data);
+            setFormData(
+                {
+                    uid: data.uid,
+                    name: data.name,
+                    email: data.email,
+                    degree: data.degree,
+                    phone: data.phone, 
+                    location: data.location,
+                    linkedin: data.linkedin,
+                    education: data.education,
+                    work:data.work,
+                }
+            )
+        }
+    },[storedUserData]);
+
+    useEffect(() => {
+        console.log('formData:', formData);
+        if(formData){
+            if(formData.education && formData.education.length>0){
+                setEducation(formData.education);
+                console.log("edu",formData.education);
+            }
+            if(formData.work && formData.work.length>0){
+                setWork(formData.work);
+                console.log("work",formData.work);
+            }
+        } 
+      }, [formData]);
+
     const addEducation = ()=>{
-        setEducation([...education,{university:"", degree:"", year:""}]);
+        setEducation([...education,{university:"NA", degree:"NA", year:"NA"}]);
     };
     const removeEducation = (index)=>{
         const updatedEducation = education.filter((_, i) => i !== index);
         setEducation(updatedEducation);
     };
     const addWork = ()=>{
-        setWork([...work,{domain:"", role:"", company:"", location:""}]);
+        setWork([...work,{domain:"NA", role:"NA", company:"NA", location:"NA"}]);
     };
     const removeWork = (index)=>{
         const updatedWork = work.filter((_, i) => i !== index);
@@ -57,6 +88,8 @@ function Profile(){
         if(data.success){
             console.log('Response Data:',data);
             console.log('Message:',data.message);
+            localStorage.setItem('userData', JSON.stringify(data.user));
+            navigate('/');
         } 
         else{
             console.error('Error', data.error);
@@ -73,27 +106,27 @@ function Profile(){
                     <div className="profile-form-3">
                         <div className="profile-form-field type1">
                             <label htmlFor="">Name</label>
-                            <input type="text" placeholder={formData.name} onChange={(e) => formData.name = e.target.value}/>
+                            <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })}/>
                         </div>      
                     </div>
                     <div className="profile-form-2">
                         <div className="profile-form-field type3">
                             <label htmlFor="">Contact Number</label>
-                            <input type="text" placeholder={formData.phone} onChange={(e) => formData.phone = e.target.value}/>
+                            <input type="text" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })}/>
                         </div>
                         <div className="profile-form-field type3">
                             <label htmlFor="">Mail</label>
-                            <input type="mail" placeholder={formData.email} onChange={(e) => formData.email = e.target.value} disabled/>
+                            <input type="mail" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} disabled/>
                         </div>
                     </div>
                     <div className="profile-form-2">
                         <div className="profile-form-field type3">
                             <label htmlFor="">Current Location</label>
-                            <input type="text" placeholder={formData.location} onChange={(e) => formData.location = e.target.value}/>
+                            <input type="text" value={formData.location} onChange={(e) => setFormData({ ...formData, location: e.target.value })}/>
                         </div>
                         <div className="profile-form-field type3">
                             <label htmlFor="">LinkedIn</label>
-                            <input type="text" placeholder={formData.linkedin} onChange={(e) => formData.linkedin = e.target.value}/>
+                            <input type="text" value={formData.linkedin} onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}/>
                         </div>
                     </div>
 
@@ -104,20 +137,30 @@ function Profile(){
                         <div className="profile-form-3" key={index}>
                             <div className="profile-form-field type1">
                                 <label htmlFor=''>University</label>
-                                <input type="text" onChange={(e) => education[index].university = e.target.value} placeholder={field.university}/>
+                                <input type="text" onChange={(e) => {
+                                                    const newEducation = [...education];
+                                                    newEducation[index].university = e.target.value;
+                                                    setEducation(newEducation);
+                                                   }}  
+                                                   value={field.university}/>
                             </div>
                             <div className="profile-form-field type2">
                                 <label htmlFor="">Degree</label>
-                                <select name="" id="" onChange={(e) => education[index].degree = e.target.value} placeholder={field.degree}>
-                                <   option value="Degree">Degree</option>
-                                    <option value="B.Tech">B.Tech</option>
-                                    <option value="M.Tech">M.Tech</option>
-                                    <option value="PhD">PhD</option>
-                                </select>
+                                <input type="text" placeholder="B.Tech,PhD,..." onChange={(e) => {
+                                                    const newEducation = [...education];
+                                                    newEducation[index].degree = e.target.value;
+                                                    setEducation(newEducation);
+                                                   }}  
+                                                   value={field.degree}/>
                             </div>
                             <div className="profile-form-field type2">
                                 <label htmlFor="">Year of Graduation</label>
-                                <input type="text" onChange={(e) => education[index].year = e.target.value} placeholder={field.year}/>
+                                <input type="text"  onChange={(e) => {
+                                                        const newEducation = [...education];
+                                                        newEducation[index].year = e.target.value;
+                                                        setEducation(newEducation);
+                                                    }} 
+                                                    value={field.year}/>
                             </div> 
                             <div className="profile-form-field">
                                 <label htmlFor=""></label>
@@ -138,7 +181,12 @@ function Profile(){
                             <div className="profile-form-2">
                                <div className="profile-form-field type3">
                                    <label htmlFor="">Domain</label>
-                                   <select name="" id="" onChange={(e) => work[index].domain = e.target.value}>
+                                   <select name="" onChange={(e) => {
+                                                    const newWork = [...work];
+                                                    newWork[index].domain = e.target.value;
+                                                    setWork(newWork);
+                                                   }}  
+                                                   value={field.domain}>
                                        <option value="Domain">Domain</option>
                                        <option value="Software">Software</option>
                                        <option value="Consulting">Consulting</option>
@@ -151,13 +199,23 @@ function Profile(){
                                </div>
                                <div className="profile-form-field type3">
                                    <label htmlFor="">Role</label>
-                                   <input type="text" onChange={(e) => work[index].role = e.target.value}/>
+                                   <input type="text" onChange={(e) => {
+                                                        const newWork = [...work];
+                                                        newWork[index].role = e.target.value;
+                                                        setWork(newWork);
+                                                        }}  
+                                                      value={field.role}/>
                                </div>  
                            </div>
                            <div className="profile-form-3">
                                <div className="profile-form-field type3">
                                    <label htmlFor="">Company</label>
-                                   <input type="text" onChange={(e) => work[index].company = e.target.value}/>
+                                   <input type="text" onChange={(e) => {
+                                                    const newWork = [...work];
+                                                    newWork[index].company = e.target.value;
+                                                    setWork(newWork);
+                                                   }}  
+                                                   value={field.company}/>
                                </div>
                                <div className="profile-form-field" id='resbtn1'>
                                    <label htmlFor=""></label>
@@ -165,7 +223,12 @@ function Profile(){
                                </div>
                                <div className="profile-form-field type3" >
                                    <label htmlFor="">Location</label>
-                                   <input type="text" onChange={(e) => work[index].location = e.target.value}/>
+                                   <input type="text" onChange={(e) => {
+                                                    const newWork = [...work];
+                                                    newWork[index].location = e.target.value;
+                                                    setWork(newWork);
+                                                   }}  
+                                                   value={field.location}/>
                                </div>
                                <div className="profile-form-field" id='resbtn2'>
                                    <label htmlFor=""></label>

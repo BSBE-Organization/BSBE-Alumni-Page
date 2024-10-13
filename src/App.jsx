@@ -14,7 +14,7 @@ function App(){
   
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
         <Navbar/>
         <Routes>
           <Route path='/' element={<LandingPage/>} />
@@ -25,7 +25,7 @@ function App(){
           <Route path='/profile' element={<Profile/>} />
         </Routes>
         <Footer/>
-      </HashRouter>
+      </BrowserRouter>
     </>
   )
 }

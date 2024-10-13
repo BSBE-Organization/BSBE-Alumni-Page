@@ -39,6 +39,10 @@
     border-radius: 5px;
     padding: 0.3vw 0.5vw;
 }
+.profile-form input::placeholder{
+    font-size: 0.8rem;
+    text-align: left;
+}
 .profile-form select{
     border: 1px solid #5F766C;
     border-radius: 5px;

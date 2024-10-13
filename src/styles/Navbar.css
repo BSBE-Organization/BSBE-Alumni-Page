@@ -18,6 +18,8 @@
   padding: 0;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .nav-bar li{
   margin: 1vw;
@@ -27,6 +29,10 @@
   align-items: center;
   border-radius: 15px;
   color: #0F6F41;
+}
+#logout{
+  width: 2.5vw;
+  height: 2.5vw;
 }
 #nav-btn{
   background-color: #0F8B4E;
@@ -50,15 +56,28 @@
 
 .toggle-menu{
   display: none;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: white;
   position: fixed;
   z-index: 10;
-  top: 20VW;
+  top: 0vw;
+}
+.toggle-menu-head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7vw 5vw 0vw 5vw;
+}
+.toggle-menu-head img{
+  width: 5vw;
+  height: 5vw;
 }
 .toggle-menu ul{
-  margin: 4vw 4vw 5vw 4vw;
+  margin: 0vw 4vw 5vw 4vw;
   padding: 0;
+  overflow: hidden;
 }
 .toggle-menu li{
   margin: 1vw;
@@ -84,5 +103,12 @@
   }
   #toggle{
     display: block;
+    width: 5vw;
+    height: 5vw;
   }
+  #logout{
+    width: 5vw;
+    height: 5vw;
+  }
+  
 }
