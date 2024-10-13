@@ -32,10 +32,10 @@ function AlumCard({data}){
                 setLinkedin(data.linkedin);
             }
             if(data.phone){
-                setPhone(data.phone);
+                setPhone("tel:"+data.phone);
             }
             if(data.email){
-                setEmail(data.email);
+                setEmail("mailto:"+data.email);
             }
         }
         
