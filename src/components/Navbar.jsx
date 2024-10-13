@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 import { useState,useEffect } from "react";
-import { useNavigate,useLocation  } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Navbar = () => {
   const [showlink,setShowlink] = useState(false);
@@ -15,7 +15,7 @@ const Navbar = () => {
     setShowlink(!showlink)
   }
   const handleLogout = () => {
-    console.log("User Logout");
+    // console.log("User Logout");
     localStorage.removeItem('userData');
     setUser('Are you an Alumni?');
     setPath('/auth');
@@ -26,11 +26,11 @@ const Navbar = () => {
   useEffect(()=>{
       if (storedUserData) {
         const userdata = JSON.parse(storedUserData);
-        console.log('userdata',userdata);
-        setUser(userdata.name);
+        // console.log('userdata',userdata);
+        setUser("Hi, "+userdata.name);
         setPath('/profile')
         setIsloggedIn(true);
-        console.log('user name', user);
+        // console.log('user name', user);
       }
 
   },[storedUserData]);

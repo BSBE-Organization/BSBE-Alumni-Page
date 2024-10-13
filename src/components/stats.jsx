@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./styles/stats.css";
+import "../styles/stats.css";
 
 const LandingPage = () => {
   const CountUp = ({ end }) => {

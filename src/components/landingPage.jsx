@@ -1,6 +1,6 @@
-import Stats from "../LandingPage/stats";
-import Events from "../LandingPage/Events";
-import './styles/landingPage.css'
+import Stats from "./stats";
+import Events from "./Events";
+import '../styles/landingPage.css'
 const LandingPage = () => {
   return (
     <>

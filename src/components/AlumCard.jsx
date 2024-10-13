@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './alumcard.css'
+import '../styles/alumcard.css'
 function AlumCard({data}){
     const [name,setName] = useState('');
     const [program,setProgram] = useState('NA');
@@ -11,21 +11,19 @@ function AlumCard({data}){
 
     useEffect(() => {
         if(data){
-            console.log('data in card',data)
             setName(data.name);
-            if(data.education[0]){
+            if(data.education && data.education[0]){
                 setBatch(data.education[0].year);
                 setProgram(data.education[0].degree);
                 setEducation(data.education);
             }
-            if(data.work[0]){
+            if(data.work && data.work[0]){
                 setDomain(data.work[0].domain)
                 setWork(data.work);
             }
             if(data.location){
                 setLocation(data.location);
-            }
-            
+            } 
         }
         
     }, [data]);

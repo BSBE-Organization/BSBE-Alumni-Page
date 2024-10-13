@@ -1,5 +1,5 @@
 import LinkedIn from 'next-auth/providers/linkedin';
-import './team.css'
+import '../styles/team.css'
 import TeamCard from './TeamCard';
 function Teams(){
     const teamData = [

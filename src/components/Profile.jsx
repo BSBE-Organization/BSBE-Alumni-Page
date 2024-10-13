@@ -1,7 +1,7 @@
-import './profile.css'
+import '../styles/profile.css'
 import { useState, useEffect } from "react";
 import { useNavigate,useLocation, Navigate  } from "react-router-dom"
-import { server_URL } from '../../Var'
+import { server_URL } from './Var'
 
 function Profile(){
     const location = useLocation();
@@ -24,7 +24,7 @@ function Profile(){
     useEffect(()=>{
         if (storedUserData) {
             const data = JSON.parse(storedUserData);
-            console.log(data);
+            // console.log(data);
             setFormData(
                 {
                     uid: data.uid,
@@ -42,15 +42,15 @@ function Profile(){
     },[storedUserData]);
 
     useEffect(() => {
-        console.log('formData:', formData);
+        // console.log('formData:', formData);
         if(formData){
             if(formData.education && formData.education.length>0){
                 setEducation(formData.education);
-                console.log("edu",formData.education);
+                // console.log("edu",formData.education);
             }
             if(formData.work && formData.work.length>0){
                 setWork(formData.work);
-                console.log("work",formData.work);
+                // console.log("work",formData.work);
             }
         } 
       }, [formData]);
@@ -73,9 +73,9 @@ function Profile(){
     const handleSubmit = async ()=>{
         formData.education = education;
         formData.work = work;
-        console.log(formData);
-        console.log(education);
-        console.log(work);
+        // console.log(formData);
+        // console.log(education);
+        // console.log(work);
 
         const response = await fetch(`${server_URL}profile`, {
             method: 'POST',
@@ -86,8 +86,8 @@ function Profile(){
         const data = await response.json();
         
         if(data.success){
-            console.log('Response Data:',data);
-            console.log('Message:',data.message);
+            // console.log('Response Data:',data);
+            // console.log('Message:',data.message);
             localStorage.setItem('userData', JSON.stringify(data.user));
             navigate('/');
         } 

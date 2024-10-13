@@ -1,7 +1,7 @@
-import './teamcard.css'
+import '../styles/teamcard.css'
 import { useEffect,useState } from 'react';
 function TeamCard({data}){
-    console.log(data);
+    
     const [userData, setUserData] = useState({ name:"", role:"", batch:"", phone:"", mail:"", LinkedIn:""});
 
     useEffect(()=>{

@@ -1,8 +1,9 @@
-import './alumlist.css'
+import '../styles/alumlist.css'
 import AlumCard from './AlumCard';
 import { useEffect, useState } from 'react';
-import { server_URL } from '../../Var'
+import { server_URL } from './Var'
 function AlumList(){
+
     const [alumni,setAlumni] = useState([]);
     const [chunkData,setChunkData] = useState([]);
     const [filteredAlumni, setFilteredAlumni] = useState([]);
@@ -22,9 +23,9 @@ function AlumList(){
                 const result = await response.json();
                 // console.log('result',result);
                 if(result.success){
-                    console.log('response',result.alumni);
+                    // console.log('response',result.alumni);
                     setAlumni([...result.alumni]);
-                    console.log("Data",alumni);
+                    // console.log("Data",alumni);
                 } 
                 else{
                     console.error('Error', result.error);
@@ -41,18 +42,13 @@ function AlumList(){
         const filterAlumni = () => {
             let filtered = alumni;
             if (degree) {
-                console.log('degree',degree);
-                filtered = filtered.filter(alum => alum.education[0] && alum.education[0].degree == degree);
+                filtered = filtered.filter(alum => alum.education && alum.education.some(edu => edu.degree == degree));
             }
             if (domain) {
-                console.log('domain',domain);
-
-                filtered = filtered.filter(alum => alum.work[0] &&  alum.work[0].domain == domain);
+                filtered = filtered.filter(alum => alum.work && alum.work.some(job => job.domain == domain));
             }
             if (year) {
-                console.log('year',year);
-
-                filtered = filtered.filter(alum => alum.education[0] &&  alum.education[0].year == year);
+                filtered = filtered.filter(alum => alum.education && alum.education.some(edu => edu.year == year));
             }
             if (keyword) {
                 filtered = filtered.filter(alum => 
@@ -76,7 +72,7 @@ function AlumList(){
             }
             setFilteredAlumni(filtered);
         };
-        console.log('filter data',filteredAlumni);
+        // console.log('filter data',filteredAlumni);
         filterAlumni();
     }, [keyword,degree, domain, year, alumni]);
 

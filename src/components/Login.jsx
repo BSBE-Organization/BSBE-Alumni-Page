@@ -1,8 +1,8 @@
-import { auth } from '../../config';
+import { auth } from '../config';
 import { getDatabase, ref, set } from 'firebase/database';
 import { getAuth,OAuthProvider, GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { server_URL } from '../../Var'
+import { server_URL } from './Var'
 function Login(){
     const navigate = useNavigate();
     const storedUserData = localStorage.getItem('userData');
@@ -21,8 +21,8 @@ function Login(){
       const data = await response.json();
       
       if(data.success){
-        console.log('Response Data:',data.userdata);
-        console.log('Message:',data.message);
+        // console.log('Response Data:',data.userdata);
+        // console.log('Message:',data.message);
 
         localStorage.setItem('userData', JSON.stringify(data.userdata));
         setTimeout(() => {
@@ -48,14 +48,14 @@ function Login(){
           const result = await signInWithPopup(auth, provider);
           const credential = OAuthProvider.credentialFromResult(result);
           const accessToken = credential.accessToken;
-          console.log(result.user);
+          // console.log(result.user);
           const user=result.user;
           const userdata = {
             uid:user.uid,
             email:user.email,
             name:user.displayName
           }
-          console.log('User logged in with Outlook:', userdata);
+          // console.log('User logged in with Outlook:', userdata);
           verify(userdata);
 
           // Save user information to Realtime Database
@@ -89,7 +89,7 @@ function Login(){
             email:user.email,
             name:user.displayName
           }
-          console.log('User logged in with Google:', userdata);
+          // console.log('User logged in with Google:', userdata);
           verify(userdata);
         } 
         catch (error){

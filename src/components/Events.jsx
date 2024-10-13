@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/events.css";
+import "../styles/events.css";
 
 const Events = () => {
   return (
@@ -14,22 +14,6 @@ const Events = () => {
         </div>
         <a href="https://forms.gle/DSmgU3faXQwA9V5C6" target="blank">Register</a>
       </div>
-
-      {/* Notable Alumni Section */}
-      {/* <div className="notable-alumni-section">
-        <h2 className="section-title">Notable Alumni</h2>
-        <div className="alumni-grid">
-          {[1, 2, 3, 4].map((_, index) => (
-            <div className="alumni-card" key={index}>
-              <img className="alumni-image" src="/public/bg.jpg" alt="image" />
-              <div className="alumni-info">
-                <h4>Aditya Jindal</h4>
-                <p>Aditya Jindal</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
     </div>
   );
 };
