@@ -191,9 +191,11 @@ function Profile(){
                                        <option value="Software">Software</option>
                                        <option value="Consulting">Consulting</option>
                                        <option value="Product">Product</option>
-                                       <option value="AI/M">AI/ML</option>
+                                       <option value="AI/ML">AI/ML</option>
                                        <option value="Analyst">Analyst</option>
                                        <option value="Research">Research</option>
+                                       <option value="Design">Design</option>
+                                       <option value="Civil Services">Civil Services</option>
                                        <option value="Other">Other</option>
                                    </select>
                                </div>

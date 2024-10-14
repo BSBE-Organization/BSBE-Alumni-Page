@@ -111,6 +111,8 @@ function AlumList(){
                         <option value="AI/ML">AI/ML</option>
                         <option value="Analyst">Analyst</option>
                         <option value="Research">Research</option>
+                        <option value="Design">Design</option>
+                        <option value="Civil Services">Civil Services</option>
                         <option value="Others">Other</option>
                     </select>
                     <input type="text" placeholder='Year' value={year} onChange={(e) => setYear(e.target.value)}/>
