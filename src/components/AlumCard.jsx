@@ -45,7 +45,7 @@ function AlumCard({data}){
             <div className="dircard">
                 <h1>{name}</h1>
                 <div className="IITG-eudcation">
-                    <h4>{program} |</h4>
+                    <h4>{program} &nbsp; |</h4>
                     <h3>Class of {batch} </h3>
                 </div>
                 <div className="title">

@@ -76,6 +76,12 @@
 .alum-social img{
     width: 3vw;
 }
+.skeleton{
+    padding: 2vw;
+}
+.in-skeleton{
+    margin: 1vw 0;
+}
 @media only screen and (max-width: 700px) {
     .dircard{
         width: 100%;
@@ -100,5 +106,11 @@
     }
     .alum-social img{
         width: 10vw;
+    }
+    .skeleton{
+        padding: 7vw 5vw;
+    }
+    .in-skeleton{
+        margin: 2vw 0;
     }
 }

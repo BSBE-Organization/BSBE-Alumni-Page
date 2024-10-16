@@ -98,7 +98,7 @@ function Profile(){
     return(
         <>
         <div className="profile">
-            <img id='profile-bg' src="images/profileBG.png" alt="" />
+            <img id='profile-bg' src="home/bg.jpg" alt="" />
             <div className="profile-box">
                 <h1>Profile</h1>
                 <div className="profile-form">
@@ -187,7 +187,7 @@ function Profile(){
                                                     setWork(newWork);
                                                    }}  
                                                    value={field.domain}>
-                                       <option value="Domain">Domain</option>
+                                       <option value="NA">Domain</option>
                                        <option value="Software">Software</option>
                                        <option value="Consulting">Consulting</option>
                                        <option value="Product">Product</option>

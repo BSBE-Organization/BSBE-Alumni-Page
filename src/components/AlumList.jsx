@@ -1,5 +1,6 @@
 import '../styles/alumlist.css'
 import AlumCard from './AlumCard';
+import SkeletonCard from './Skeleton';
 import { useEffect, useState } from 'react';
 import { server_URL } from './Var'
 function AlumList(){
@@ -11,31 +12,42 @@ function AlumList(){
     const [degree, setDegree] = useState('');
     const [domain, setDomain] = useState('');
     const [year, setYear] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(()=>{
-
-        const fetchUser = async () => {
-            try {
-                const response = await fetch(`${server_URL}directory`, {
-                    method: 'GET',
-                    headers: { 'Content-Type': 'application/json' },
-                });
-                const result = await response.json();
-                // console.log('result',result);
-                if(result.success){
-                    // console.log('response',result.alumni);
-                    setAlumni([...result.alumni]);
-                    // console.log("Data",alumni);
-                } 
-                else{
-                    console.error('Error', result.error);
-                }
-            } 
-            catch (err) {
-              console.error(err);
+        const storedAlumni = localStorage.getItem('alumni');
+        if (storedAlumni) {
+            const data = JSON.parse(storedAlumni);
+            const expirationTime = data.expirationTime;
+            if (expirationTime > Date.now()) {
+                setAlumni(data.alumni);
+            } else {
+                localStorage.removeItem('alumni');
             }
-        };
-        fetchUser();
+        } else {
+            const fetchUser   = async () => {
+                try {
+                    const response = await fetch(`${server_URL}directory`, {
+                        method: 'GET',
+                        headers: { 'Content-Type': 'application/json' },
+                    });
+                    const result = await response.json();
+                    if(result.success){
+                        const expirationTime = Date.now() + 5 * 60 * 1000; // 10 minutes
+                        const dataToStore = { alumni: result.alumni, expirationTime };
+                        localStorage.setItem('alumni', JSON.stringify(dataToStore));
+                        setAlumni(result.alumni);
+                    } 
+                    else{
+                        console.error('Error', result.error);
+                    }
+                } 
+                catch (err) {
+                  console.error(err);
+                }
+            };
+            fetchUser  ();
+        }
     },[]);
 
     useEffect(() => {
@@ -84,9 +96,29 @@ function AlumList(){
             }
             return chunks;
         };
-
-        setChunkData(groupArrayInChunks(filteredAlumni, 3));
+    
+        const threeChunks = groupArrayInChunks(filteredAlumni, 3); // Create chunks of 3
+        const nineChunks = groupArrayInChunks(threeChunks, 3); // Group those into pages of 9
+        setChunkData(nineChunks);
     }, [filteredAlumni]);
+    
+    const handleNext = () => {
+        if (currentPage < chunkData.length) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const handlePrevious = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    const GotoPage = (page) =>{
+        setCurrentPage(page);
+    }
+
+    const lastPage = chunkData.length;
 
     return(
         <>  
@@ -117,16 +149,42 @@ function AlumList(){
                     </select>
                     <input type="text" placeholder='Year' value={year} onChange={(e) => setYear(e.target.value)}/>
                 </div>
-                {alumni.length==0 && <h1 id='loading'>Loading.....</h1>}
-                {alumni.length>0 && <h1 id='loading'>Search Results {keyword && <>for {keyword}</>} ({filteredAlumni.length})</h1>}
-                {chunkData.map((chunk,index)=>(
-                    <div className="alum-box" key={index}>
-                        {chunk.map((item,idx)=>(
-                            <AlumCard data={item} key={idx} />
+            
+                {alumni.length==0 && 
+                    <div className="alum-box">
+                        <SkeletonCard/>
+                        <SkeletonCard/>
+                        <SkeletonCard/>
+                    </div>
+                }
+                {alumni.length>0 && keyword && <h1 id='loading'>Search Results {keyword && <>for {keyword}</>} ({filteredAlumni.length})</h1>}
+                {chunkData.length > 0 && (
+                    <div className="alum-box-container">
+                        {chunkData[currentPage - 1].map((chunk, chunkIndex) => (
+                            <div className="alum-box" key={chunkIndex}>
+                                {chunk.map((item, idx) => (
+                                    <AlumCard data={item} key={idx} />
+                                ))}
+                            </div>
                         ))}
                     </div>
-                ))}
-                
+                )}
+                <div className="alumni-page">
+                    <div className="page-box" onClick={handlePrevious} style={{ cursor: currentPage > 1 ? 'pointer' : 'not-allowed' }}>
+                        <img src="images/left.png" alt="Previous" />
+                    </div>
+                    <div className="page-box" style={{backgroundColor:'#AFFFD8'}}><h1>{currentPage}</h1></div>
+                    {currentPage < lastPage && (<div className="page-box" onClick={()=>GotoPage(currentPage+1)}><h1>{currentPage + 1}</h1></div>)}
+                    {currentPage < lastPage-1 && 
+                        (<>
+                            <div className="page-box"><h1>...</h1></div>
+                            <div className="page-box" onClick={()=>GotoPage(lastPage)}><h1>{lastPage}</h1></div>
+                        </>)
+                    }
+                    <div className="page-box" onClick={handleNext} style={{ cursor: currentPage < lastPage ? 'pointer' : 'not-allowed' }}>
+                        <img src="images/right.png" alt="Next" />
+                    </div>
+                </div>
             </div> 
         </>
     )
