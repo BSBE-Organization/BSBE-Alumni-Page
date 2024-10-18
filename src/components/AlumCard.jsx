@@ -12,34 +12,30 @@ function AlumCard({data}){
     const [phone,setPhone] = useState('');
     const [linkedin,setLinkedin] = useState('');
 
+    console.log("data",data);
 
     useEffect(() => {
         if(data){
-            setName(data.name);
-            if(data.education && data.education[0]){
-                setBatch(data.education[0].year);
-                setProgram(data.education[0].degree);
-                setEducation(data.education);
-            }
-            if(data.work && data.work[0]){
-                setDomain(data.work[0].domain)
-                setWork(data.work);
-            }
-            if(data.location){
-                setLocation(data.location);
-            } 
-            if(data.linkedin){
-                setLinkedin(data.linkedin);
-            }
-            if(data.phone){
-                setPhone("tel:"+data.phone);
-            }
-            if(data.email){
-                setEmail("mailto:"+data.email);
-            }
+            setName(data.name || '');
+            setProgram(data.education?.[0]?.degree || 'NA');
+            setBatch(data.education?.[0]?.year || 'NA');
+            setEducation(data.education || []);
+            setDomain(data.work?.[0]?.domain || 'NA');
+            setWork(data.work || []);
+            setLocation(data.location || '');
+            setPhone(data.phone ? `tel:${data.phone}` : '');
+            setEmail(data.email ? `mailto:${data.email}` : '');
+            setLinkedin(data.linkedin || '');
         }
         
     }, [data]);
+
+    const handleClick = (e, link) => {
+        if (!link) {
+            e.preventDefault();
+        }
+    };
+
     return(
         <>
             <div className="dircard">
@@ -75,9 +71,9 @@ function AlumCard({data}){
                     ))}   
                 </div>
                 <div className="alum-social">
-                    <a href={phone} target=''><img src="images/phone.png"/></a>
-                    <a href={email} target='blank'><img src="images/mail.png"/></a>
-                    <a href={linkedin} target='blank'><img src="images/linkedin.png"/></a>
+                    <a href={phone} onClick={(e) => handleClick(e, phone)} target=''><img src="images/phone.png"/></a>
+                    <a href={email} onClick={(e) => handleClick(e, email)} target='blank'><img src="images/mail.png"/></a>
+                    <a href={linkedin} onClick={(e) => handleClick(e, linkedin)} target='blank'><img src="images/linkedin.png"/></a>
                 </div>
             </div>
         </>

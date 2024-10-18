@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <>
       <div className="nav-bar">
-        <img src="home/iitg.png" alt="" />
+       <Link to="/"><img src="home/iitg.png" alt="" /></Link>
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/directory">Directory</Link></li>

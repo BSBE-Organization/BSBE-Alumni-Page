@@ -102,23 +102,36 @@ function AlumList(){
         setChunkData(nineChunks);
     }, [filteredAlumni]);
     
+    useEffect(() => {
+        const storedPage = localStorage.getItem('currentPage');
+        if (storedPage) {
+            setCurrentPage(Number(storedPage));
+        }
+    }, []);
+
     const handleNext = () => {
         if (currentPage < chunkData.length) {
-            setCurrentPage(currentPage + 1);
+            const nextPage = currentPage + 1;
+            setCurrentPage(nextPage);
+            localStorage.setItem('currentPage', nextPage);
         }
     };
 
     const handlePrevious = () => {
         if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
+            const prevPage = currentPage - 1;
+            setCurrentPage(prevPage);
+            localStorage.setItem('currentPage', prevPage);
         }
     };
 
-    const GotoPage = (page) =>{
+    const GotoPage = (page) => {
         setCurrentPage(page);
-    }
+        localStorage.setItem('currentPage', page);
+    };
 
     const lastPage = chunkData.length;
+    
 
     return(
         <>  
