@@ -56,7 +56,12 @@ function Profile(){
       }, [formData]);
 
     const addEducation = ()=>{
-        setEducation([...education,{university:"NA", degree:"NA", year:"NA"}]);
+        if(education.length>0){
+            setEducation([...education,{university:"NA", degree:"NA", year:"NA"}]);
+        }
+        else{
+            setEducation([...education,{university:"IIT Guwahati", degree:"NA", year:"NA"}]);
+        }
     };
     const removeEducation = (index)=>{
         const updatedEducation = education.filter((_, i) => i !== index);
@@ -146,12 +151,26 @@ function Profile(){
                             </div>
                             <div className="profile-form-field type2">
                                 <label htmlFor="">Degree</label>
-                                <input type="text" placeholder="B.Tech,PhD,..." onChange={(e) => {
-                                                    const newEducation = [...education];
-                                                    newEducation[index].degree = e.target.value;
-                                                    setEducation(newEducation);
-                                                   }}  
-                                                   value={field.degree}/>
+                                {index==0 && 
+                                    (<select name="" onChange={(e) => {
+                                        const newEducation = [...education];
+                                        newEducation[index].degree = e.target.value;
+                                        setEducation(newEducation);
+                                        }}>
+                                        <option value="NA">Degree</option>
+                                        <option value="B.Tech">B.Tech</option>
+                                        <option value="M.Tech">M.Tech</option>
+                                        <option value="PhD">PhD</option>
+                                    </select>)
+                                }
+                                {index!=0 && 
+                                    (<input type="text" placeholder="B.Tech,PhD,..." onChange={(e) => {
+                                                        const newEducation = [...education];
+                                                        newEducation[index].degree = e.target.value;
+                                                        setEducation(newEducation);
+                                                    }}  
+                                                    value={field.degree}/>)
+                                }
                             </div>
                             <div className="profile-form-field type2">
                                 <label htmlFor="">Year of Graduation</label>
@@ -175,7 +194,7 @@ function Profile(){
                     </div>
                     <hr></hr>
 
-                    <h2>Work</h2>
+                    <h2>Work Experience</h2>
                     {work.map((field,index)=>(
                         <>
                             <div className="profile-form-2">
