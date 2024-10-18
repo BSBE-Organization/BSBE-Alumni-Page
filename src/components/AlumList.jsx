@@ -101,19 +101,13 @@ function AlumList(){
         const nineChunks = groupArrayInChunks(threeChunks, 3); // Group those into pages of 9
         setChunkData(nineChunks);
     }, [filteredAlumni]);
-    
-    useEffect(() => {
-        const storedPage = localStorage.getItem('currentPage');
-        if (storedPage) {
-            setCurrentPage(Number(storedPage));
-        }
-    }, []);
+
 
     const handleNext = () => {
         if (currentPage < chunkData.length) {
             const nextPage = currentPage + 1;
             setCurrentPage(nextPage);
-            localStorage.setItem('currentPage', nextPage);
+            window.scrollTo(0, 0);
         }
     };
 
@@ -121,13 +115,13 @@ function AlumList(){
         if (currentPage > 1) {
             const prevPage = currentPage - 1;
             setCurrentPage(prevPage);
-            localStorage.setItem('currentPage', prevPage);
+            window.scrollTo(0, 0);
         }
     };
 
     const GotoPage = (page) => {
         setCurrentPage(page);
-        localStorage.setItem('currentPage', page);
+        window.scrollTo(0, 0);
     };
 
     const lastPage = chunkData.length;
