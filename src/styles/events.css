@@ -13,6 +13,7 @@
 }
 .events-container img{
   width: 70vw;
+  border-radius: 15px;
 }
 .event-box{
   margin: 5vw 10vw 5vw 10vw;
@@ -43,7 +44,7 @@
   padding: 0;
   font-size: 3vw;
   text-align: left;
-  color: black;
+  color: #0F8B4E;
 }
 .description p{
   margin: 0;

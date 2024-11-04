@@ -12,7 +12,7 @@ function AlumCard({data}){
     const [phone,setPhone] = useState('');
     const [linkedin,setLinkedin] = useState('');
 
-    console.log("data",data);
+    // console.log("data",data);
 
     useEffect(() => {
         if(data){
