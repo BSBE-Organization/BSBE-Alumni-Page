@@ -5,7 +5,7 @@ const LandingPage = () => {
   return (
     <>
       <div className="home">
-        <img src="home/bg.jpg" alt="" />
+        <img src="home/bgk.jpg" alt="" />
         <div className="heading">
           <h2>BSBE</h2>
           <h1>Alumni Page</h1>
